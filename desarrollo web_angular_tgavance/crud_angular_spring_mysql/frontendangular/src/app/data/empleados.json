@@ -1,0 +1,22 @@
+{
+    "empleados": [
+        {
+            "id": 1,
+            "nombre": "nombrePrueba1",
+            "apellido": "apellidoPrueba1",
+            "email": "prueba1@gmail.com"
+        },
+        {
+            "id": 2,
+            "nombre": "nombrePrueba2",
+            "apellido": "apellidoPrueba2",
+            "email": "prueba2@gmail.com"
+        },
+        {
+            "id": 3,
+            "nombre": "nombrePrueba3",
+            "apellido": "apellidoPrueba3",
+            "email": "prueba3@gmail.com"
+        }
+    ]
+}

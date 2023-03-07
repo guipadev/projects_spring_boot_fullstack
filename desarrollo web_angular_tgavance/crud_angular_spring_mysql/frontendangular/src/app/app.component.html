@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a routerLink="empleados" routerLinkActive="active" class="nav-link">
+        Lista Empleados
+      </a>
+    </li>
+    <li class="nav-item">
+      <a routerLink="registrar-empleado" routerLinkActive="active" class="nav-link">
+        Registrar Empleado
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<div style="text-align: center;">
+  <h1>
+    {{ title }}
+  </h1>
+  <img width="300" src="https://imgs.search.brave.com/BCg19x7q-iqRhEBCD_IBArvzIxpgYvpN2MnaH88o3Ls/rs:fit:480:359:1/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vdmVjdG9y/cy9jb21wYW55LWVt/cGxveWVlcy1idXNp/bmVzcy13b3JrZmxv/dy1tYW5hZ2VtZW50/LXRob3VnaHQtcHJv/Y2Vzcy10ZWFtLXZl/Y3Rvci1pZDEwOTE0/MTcwOTI_az02Jm09/MTA5MTQxNzA5MiZz/PTE3MDY2N2Emdz0w/Jmg9UWZRbU9XdF9B/Q3NKVGdDRFh2TXY5/eWRPMHJ6QWNZY3Ax/WWdCZ0tULUJHbz0" alt="Logo">
+</div>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+
+
+
+

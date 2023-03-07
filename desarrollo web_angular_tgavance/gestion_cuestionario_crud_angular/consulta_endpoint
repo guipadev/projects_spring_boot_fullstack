@@ -1,0 +1,22 @@
+# Registrar usuario - JSON
+POST
+http://localhost:8080/usuarios/
+
+{
+    "username":"batman",
+    "name":"Bruce",
+    "lastname":"Wayne",
+    "email":"batman@gmail.com",
+    "profile":"bat.png",
+    "phone":"123456789"
+}
+
+
+# Consulta usuario
+GET
+http://localhost:8080/batman
+
+
+# Eliminar usuario 
+DELETE
+http://localhost:8080/7

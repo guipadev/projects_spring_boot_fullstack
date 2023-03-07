@@ -1,0 +1,53 @@
+<div class="container mt-5">
+  <div class="row">
+
+    <div class="col-md-6">
+      <h3>Mis Libros</h3>
+        <table class="mt-5 table table-hover">
+          <thead>
+            <tr>
+              <th>TITULO</th>
+              <th>FECHA CREACIÓN</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let libro of libros">
+              <td>{{ libro.titulo }}</td>
+              <td>{{ libro.fechaCreacion | date:'dd/MM/yyyy hh:mm a' }}</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+    <div class="col-md-6">
+      <h3>Nuevo libro</h3>
+
+      <form class="mt-5" (ngSubmit)="create()" [formGroup]="formulario">
+        <div class="mb-3"> 
+          <label for="titulo">Titulo</label>
+          <input
+            id="titulo"
+            type="text"
+            placeholder="Título"
+            class="form-control"
+            formControlName="titulo" 
+            ><!-- vinculacion formControlName -->
+        </div>
+
+        <!-- Mensaje validación obligatorio -->
+        <div class="text-danger" *ngIf="formulario.controls['titulo'].touched && formulario.controls['titulo'].hasError('required')">
+          El título es obligatorio
+        </div>
+
+        <!-- Mensaje validación min txt en minuscula escribir minlength -->
+        <div class="text-danger" *ngIf="formulario.controls['titulo'].touched && formulario.controls['titulo'].hasError('minlength')">
+          El título debe contener minimo 3 caracteres
+        </div>
+
+        <div class="text-end">
+          <button class="btn btn-primary">Crear</button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>

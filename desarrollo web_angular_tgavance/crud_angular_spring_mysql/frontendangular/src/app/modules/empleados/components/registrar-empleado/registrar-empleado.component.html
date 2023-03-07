@@ -1,0 +1,84 @@
+<div class="col-md-6 offset-md-3">
+    <h3 class="text-center">Registro de empleado</h3>
+    <form (ngSubmit)="onSubmit()" #empleadoForm="ngForm">
+        <div class="form-group">
+            <label>Nombres</label>
+            <input 
+                type="text" 
+                class="form-control" 
+                id="nombre" 
+                name="nombre" 
+                required
+                minlength="2"
+                maxlength="50"
+                placeholder="Digite Nombres"
+                [(ngModel)] ="empleado.nombre"
+                #nombre = "ngModel"
+            >
+            <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                <div *ngIf="nombre.errors.required">
+                    Digite su nombre por favor
+                </div>
+                <div *ngIf="nombre.errors.minlength">
+                    Nombre debe tener minimo 2 caracteres
+                </div>
+                <div *ngIf="nombre.errors.maxlength">
+                    Nombre debe tener maximo 50 caracteres
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Apellidos</label>
+            <input 
+                type="text" 
+                class="form-control" 
+                id="apellido" 
+                name="apellido" 
+                required
+                minlength="2"
+                maxlength="50"
+                placeholder="Digite Apellidos"
+                minlength="2"
+                maxlength="50"
+                [(ngModel)] ="empleado.apellido"
+                #apellido = "ngModel"
+            >
+            <div class="alert alert-danger" *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)">
+                <div *ngIf="apellido.errors.required">
+                    Digite su nombre por favor
+                </div>
+                <div *ngIf="apellido.errors.minlength">
+                    Apellidos debe tener minimo 2 caracteres
+                </div>
+                <div *ngIf="apellido.errors.maxlength">
+                    Apellidos debe tener maximo 50 caracteres
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Correo Electronico</label>
+            <input 
+                type="email" 
+                class="form-control" 
+                id="email" 
+                name="email"
+                required
+                placeholder="Digite Email" 
+                pattern="[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
+                [(ngModel)] ="empleado.email"
+                #email = "ngModel"
+            >
+            <div class="alert alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+                <div *ngIf="email.errors.required">
+                    Digite su email por favor
+                </div>
+                <div *ngIf="email.errors.pattern">
+                    Digite un email valido, ej: oso10@gmail.com
+                </div>
+            </div>            
+        </div>
+        <button class="btn btn-success" [disabled]="!empleadoForm.form.valid"  style="margin-top: 10px;">
+            Registrar
+        </button>
+    </form>
+</div>
