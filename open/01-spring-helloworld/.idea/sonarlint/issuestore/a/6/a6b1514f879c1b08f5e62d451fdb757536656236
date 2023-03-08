@@ -1,0 +1,9 @@
+
+V
+java:S1854"@Remove this useless assignment to local variable "calculadora2".(æ†¢õ
+V	java:S125"<This block of commented-out lines of code should be removed.(è‡¹ãþÿÿÿÿ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(Æ¼Ø°
+G
+java:S1481"1Remove this unused "calculadora2" local variable.(æ†¢õ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(Æ¼Ø°
+S	java:S106"9Replace this use of System.out or System.err by a logger.(³è­õÿÿÿÿÿ
