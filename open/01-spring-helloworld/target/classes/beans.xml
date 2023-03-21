@@ -4,6 +4,10 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <!--
+    Creación de Bean(Objetos Java) el cual pasara estar  gestionado por Spring
+    Para inyectarlo en cualquier parte del proyecto
+     -->
     <bean id="calculadora" class="com.example.Calculadora" scope="prototype">
     </bean>
 
