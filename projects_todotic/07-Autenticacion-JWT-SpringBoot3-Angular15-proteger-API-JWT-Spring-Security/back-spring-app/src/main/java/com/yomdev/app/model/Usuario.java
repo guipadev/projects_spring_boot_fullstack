@@ -3,8 +3,6 @@ package com.yomdev.app.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.time.LocalDate;
-
 @Entity
 @Data
 public class Usuario {
