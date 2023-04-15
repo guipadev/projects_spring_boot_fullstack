@@ -1,4 +1,4 @@
-package com.yomdev.app.security;
+package com.yomdev.app.config;
 
 import com.yomdev.app.security.filter.JWTAuthenticationFilter;
 import com.yomdev.app.security.filter.JWTAuthorizationFilter;
@@ -33,8 +33,12 @@ public class WebSecurityConfig {
         jwtAuthenticationFilter.setFilterProcessesUrl("/login");
 
         return http
+                .cors()
+                .and()
                 .csrf().disable() //Politicas CORS
-                .authorizeRequests() //Reglas de autorización, todas las solicitudes deben estar autenticada
+                .authorizeHttpRequests() //Reglas de autorización, todas las solicitudes deben estar autenticada
+                //.requestMatchers("/api/contactos")
+                //.permitAll() // permitir cualquiera ingresar a /conctactos sin token
                 .anyRequest()
                 .authenticated()
                 //.and()
