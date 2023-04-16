@@ -5,3 +5,9 @@ export interface Contacto {
     celular?: string;
     email?: string;
 }
+
+//Estructura credencials para capturar el datos
+export interface credentials {
+    email: string;
+    password: string;
+}
