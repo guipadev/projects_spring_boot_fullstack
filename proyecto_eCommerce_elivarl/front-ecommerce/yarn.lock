@@ -259,6 +259,11 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
+"@popperjs/core@^2.11.7":
+  version "2.11.7"
+  resolved "https://registry.npmjs.org/@popperjs/core/-/core-2.11.7.tgz"
+  integrity sha512-Cr4OjIkipTtcXKjAsm8agyleBuDHvxzeBoa1v543lbv1YaIwQjESsVcmjiWiPEbC1FIeHOG/Op9kdCmAmiS3Kw==
+
 "@remix-run/router@1.5.0":
   version "1.5.0"
   resolved "https://registry.npmjs.org/@remix-run/router/-/router-1.5.0.tgz"
@@ -307,6 +312,11 @@ ansi-styles@^3.2.1:
   integrity sha512-VT0ZI6kZRdTh8YyJw3SMbYm/u+NqfsAxEpWO0Pf9sq8/e94WxxOpPKx9FR1FlyCtOVDNOQ+8ntlqFxiRc+r5qA==
   dependencies:
     color-convert "^1.9.0"
+
+bootstrap@^5.3.0-alpha3:
+  version "5.3.0-alpha3"
+  resolved "https://registry.npmjs.org/bootstrap/-/bootstrap-5.3.0-alpha3.tgz"
+  integrity sha512-FBhOWMxkCFr74hesJdchLXhqagPTXS+kRNU3gE0FR5Ki/AdPSz32Ik96Z28+yBluCnE/pc9st7l1yPwKgbtfSA==
 
 browserslist@^4.21.3, "browserslist@>= 4.21.0":
   version "4.21.5"

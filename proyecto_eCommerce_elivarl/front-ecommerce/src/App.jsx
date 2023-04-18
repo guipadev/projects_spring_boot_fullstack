@@ -1,14 +1,15 @@
 import './App.css'
+import Header from './component/Header'
 import Home from './pages/administrador/Home'
 
 function App() {
 
   return (
-    <div className="container">
-      
+    <>
+      <Header />
       <Home />
       
-    </div>
+    </>
   )
 }
 

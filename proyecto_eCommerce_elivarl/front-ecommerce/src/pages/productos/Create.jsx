@@ -1,33 +1,33 @@
 const Create = () => {
   return (
-    <div class="container">
-      <h1 class="mt-4 mb-3">
+    <div className="container">
+      <h1 className="mt-4 mb-3">
         Spring eCommerce <small>Productos</small>
       </h1>
 
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <a href="index.html">Home</a>
+      <ol className="breadcrumb">
+        <li className="breadcrumb-item">
+          <a href={`/`}>Home</a>
         </li>
-        <li class="breadcrumb-item active">Crear Productos</li>
+        <li className="breadcrumb-item active">Crear Productos</li>
       </ol>
 
       <h2>Crear Producto</h2>
 
       <form
-        class="form-horizontal"
+        className="form-horizontal"
         th:action="@{/productos/save}"
         method="post"
         enctype="multipart/form-data"
       >
-        <div class="form-group">
-          <label class="control-label col-sm-2" for="nombre">
+        <div className="form-group">
+          <label className="control-label col-sm-2" for="nombre">
             Nombre:
           </label>
-          <div class="col-sm-10">
+          <div className="col-sm-10">
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               id="nombre"
               name="nombre"
               placeholder="Ingrese el nombre del producto"
@@ -36,13 +36,13 @@ const Create = () => {
             />
           </div>
         </div>
-        <div class="form-group">
-          <label class="control-label col-sm-2" for="descripcion">
+        <div className="form-group">
+          <label className="control-label col-sm-2" for="descripcion">
             Descripción:
           </label>
-          <div class="col-sm-10">
+          <div className="col-sm-10">
             <textarea
-              class="form-control"
+              className="form-control"
               id="descripcion"
               name="descripcion"
               placeholder="Ingrese la descripcion del producto"
@@ -54,14 +54,14 @@ const Create = () => {
           </div>
         </div>
 
-        <div class="form-group">
-          <label class="control-label col-sm-2" for="cantidad">
+        <div className="form-group">
+          <label className="control-label col-sm-2" for="cantidad">
             Cantidad:
           </label>
-          <div class="col-sm-10">
+          <div className="col-sm-10">
             <input
               type="number"
-              class="form-control"
+              className="form-control"
               id="cantidad"
               name="cantidad"
               placeholder="Ingrese la cantidad del producto"
@@ -71,14 +71,14 @@ const Create = () => {
           </div>
         </div>
 
-        <div class="form-group">
-          <label class="control-label col-sm-2" for="precio">
+        <div className="form-group">
+          <label className="control-label col-sm-2" for="precio">
             Precio:
           </label>
-          <div class="col-sm-10">
+          <div className="col-sm-10">
             <input
               type="number"
-              class="form-control"
+              className="form-control"
               step="any"
               id="precio"
               name="precio"
@@ -89,19 +89,19 @@ const Create = () => {
           </div>
         </div>
 
-        <div class="form-group">
-          <label class="control-label col-sm-2" for="img">
+        <div className="form-group">
+          <label className="control-label col-sm-2" for="img">
             Imagen:
           </label>
-          <div class="col-sm-10">
-            <input type="file" class="form-control-file" id="img" name="img" />
+          <div className="col-sm-10">
+            <input type="file" className="form-control-file" id="img" name="img" />
           </div>
         </div>
 
-        <div class="row">
-          <div class="col-sm-2">
-            <button type="submit" class="btn btn-success">
-              <span class="glyphicon glyphicon-saved"></span> Guardar
+        <div className="row">
+          <div className="col-sm-2">
+            <button type="submit" className="btn btn-success">
+              <span className="glyphicon glyphicon-saved"></span> Guardar
             </button>
           </div>
         </div>

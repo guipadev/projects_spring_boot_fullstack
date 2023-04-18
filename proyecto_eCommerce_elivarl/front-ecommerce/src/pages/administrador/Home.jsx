@@ -3,7 +3,7 @@ const Home = () => {
     <>
       <div class="container">
         <header class="jumbotron my-4">
-          <h1 class="display-3">Bienvenido a Spring Ecommerce 2021</h1>
+          <h1 class="display-3">Hulk Store</h1>
           <p class="lead">Tu tienda de productos en Línea</p>
         </header>
 
