@@ -44,15 +44,20 @@ Crear las habilidades y asociar a persona:
 ```
 use party_people;
 
-INSERT INTO party_people.habilidades (habilidad_id, nivel, nombre, persona_id) VALUES ('1', 'BAJO', 'bailar', '1');
-INSERT INTO party_people.habilidades (habilidad_id, nivel, nombre, persona_id) VALUES ('2', 'INTERMEDIO', 'cantar', '1');
-INSERT INTO party_people.habilidades (habilidad_id, nivel, nombre, persona_id) VALUES ('3', 'ALTO', 'tocar', '1');
+INSERT INTO party_people.habilidades (habilidad_id, nivel, nombre, persona_id) VALUES ('1', 'Bajo', 'bailar', '1');
+INSERT INTO party_people.habilidades (habilidad_id, nivel, nombre, persona_id) VALUES ('2', 'Medio', 'cantar', '1');
+INSERT INTO party_people.habilidades (habilidad_id, nivel, nombre, persona_id) VALUES ('3', 'Alto', 'tocar', '1');
 ```
 
 Relacionar persona con muchas fiestas
 ```
-INSERT INTO party_people.personas_fiestas (persona_id, fiesta_id, personas_persona_id) VALUES ('1', '1', '1');
-INSERT INTO party_people.personas_fiestas (persona_id, fiesta_id, personas_persona_id) VALUES ('1', '2', '1');
+INSERT INTO party_people.personas_fiestas (persona_id, fiesta_id) VALUES ('1', '5');
+INSERT INTO party_people.personas_fiestas (persona_id, fiesta_id) VALUES ('2', '3');
+INSERT INTO party_people.personas_fiestas (persona_id, fiesta_id) VALUES ('3', '2');
+INSERT INTO party_people.personas_fiestas (persona_id, fiesta_id) VALUES ('3', '4');
+INSERT INTO party_people.personas_fiestas (persona_id, fiesta_id) VALUES ('2', '1');
+INSERT INTO party_people.personas_fiestas (persona_id, fiesta_id) VALUES ('1', '2');
+
 ```
 
 ### Consultas end point persona
