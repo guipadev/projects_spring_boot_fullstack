@@ -5,6 +5,7 @@ import com.api.rest.publicaciones.repository.PublicacionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -37,4 +38,11 @@ public class PublicacionController {
         }).orElseThrow(() -> new RuntimeException("Publicacione con el ID : " + publicacionId + " no encontrada"));
     }
 
+    @DeleteMapping("/publicaciones/{publicacionId}")
+    public ResponseEntity<?> eliminarPublicacion(@PathVariable Long publicacionId) {
+        return publicacionRepository.findById(publicacionId).map(publicacion -> {
+           publicacionRepository.delete(publicacion);
+           return ResponseEntity.ok().build();
+        }).orElseThrow(() -> new RuntimeException("Publicacione con el ID : " + publicacionId + " no encontrada"));
+    }
 }

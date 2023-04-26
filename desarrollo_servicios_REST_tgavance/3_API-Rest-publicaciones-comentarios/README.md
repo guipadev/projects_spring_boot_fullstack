@@ -1,30 +1,17 @@
-# APIs REST con relaciones @OneToMany, @ManyToOne de una Biblioteca
-
-### Desarrollo de una API de servicios web RESTful
-Se desarrolla para dar a conocer los datos de libros y biblioteca
-
-### Relacion Bidireccional
-Tanto de "libros" voy a poder acceder/obtener datos a "biblioteca" y vicebersa.
-
-@OneToMany: Ya que una biblioteca puede tener muchos libros.
-
-@ManyToOne: Muchos libros pueden pertenecerle a una biblioteca.
+# APIs REST con relaciones unidireccional @ManyToOne de publicaciones y comentarios
 
 Imagen de la relación a realizar en BD:
 
 ![Image text](https://github.com/yadevom/apirest_biblioteca_bidirecional/blob/main/relacion_bd.png)
 
-### Dependencias utilizadas para App
-- MySQL Drive
-- Spring Data JPA
-- Spring Web
-- Spring Boot DevTools
-- Validation
-
 ### Creación Base de Dato (MySQL)
 Debemos tener creada la BD antes de ejecutar la App
 ```
-create database colegio_editorial;
+create database publicaciones;
+
+o
+
+CREATE SCHEMA publicaciones DEFAULT CHARACTER SET utf8 COLLATE utf8_bin ;
 ```
 ### Configuración conexión BD
 En el archivio application.properties, indicar el nombre de la BD, username y password:
@@ -34,9 +21,9 @@ spring.datasource.username = $USER
 spring.datasource.password = $PASS
 ```
 ### Script SQL
-Consulta de bibliotecas:
+Consulta de publicaciones:
 ```
-SELECT * FROM colegio_editorial.library;
+SELECT * FROM publicaciones.publicaciones;
 ```
 
 Consulta de libros:
@@ -44,8 +31,10 @@ Consulta de libros:
 SELECT * FROM colegio_editorial.books ;
 ```
 
-### Consultas end point Biblioteca
-Consulta todas las bibliotecas - GET ```http://localhost:8080/api/library```
+### Consultas end point
+Creacion de publicaciones - POST ```http://localhost:8080/publicaciones```
+
+Consulta todas las publicaciones - GET ```http://localhost:8080/publicaciones```
 
 Consulta biblioteca especifica - GET ```http://localhost:8080/api/library/2```
 
