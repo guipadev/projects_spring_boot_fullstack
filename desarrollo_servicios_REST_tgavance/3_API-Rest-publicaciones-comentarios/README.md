@@ -9,7 +9,7 @@ Debemos tener creada la BD antes de ejecutar la App
 ```
 create database publicaciones;
 
-o
+ó
 
 CREATE SCHEMA publicaciones DEFAULT CHARACTER SET utf8 COLLATE utf8_bin ;
 ```
@@ -34,54 +34,29 @@ SELECT * FROM colegio_editorial.books ;
 ### Consultas end point
 Creacion de publicaciones - POST ```http://localhost:8080/publicaciones```
 
+```
+{
+    "titulo" : "Curso API Rest 10",
+    "descripcion" : "CRUD OneyToMany unidericcional",
+    "contenido" : "anotaciones relacionales"
+}
+```
+
 Consulta todas las publicaciones - GET ```http://localhost:8080/publicaciones```
 
-Consulta biblioteca especifica - GET ```http://localhost:8080/api/library/2```
+Actualizar publicacion - PUT ```http://localhost:8080/publicaciones/1```
 
-Eliminar biblioteca - DELETE ```http://localhost:8080/api/library/2```
+Conulstar publicacion por paginacion - GET ```http://localhost:8080/publicaciones?page=0&size=2&sort=fechaCreacion,desc```
 
-Registrar biblioteca - POST ```http://localhost:8080/api/library```
+Registrar comentarios - POST ```http://localhost:8080/publicaciones/1/comentarios```
 ```
 {
-    "name": "Casa de programacion"
+    "texto" : "Muy didactico"
 }
 ```
-Actualizar biblioteca - PUT ```http://localhost:8080/api/library/2```
+Consultar comentarios de publicacion - GET ```http://localhost:8080/publicaciones/1/comentarios```
 
-Indicar el ID actualizar y escribir cuerpo dato a modificar
-```
-{
-    "name": "Arquitectura Frontend"
-}
-```
+Eliminar comentario especifico de publicacion - DELETE ```http://localhost:8080/publicaciones/1/comentarios/1```
 
-### Consultas end point Libros
-Registrar un libro - POST ```http://localhost:8080/api/books```
-```
-{
-    "name": "ReactJS Ganchos",
-    "library": {
-        "id" : 2
-    }
-}
-```
-
-Consulta todas los libros - GET ```http://localhost:8080/api/books```
-
-Consulta libro en especifico - GET ```http://localhost:8080/api/books/2```
-
-Eliminar libro - DELETE ```http://localhost:8080/api/books/2```
-
-
-Actualizar libro - PUT ```http://localhost:8080/api/books/1```
-
-Indicar el ID actualizar dato del libro o biblioteca a modificar
-```
-{
-    "name": "Algoritmia avanzada",
-    "library": {
-        "id" : 1
-    }
-}
-```
+Eliminar publicacion especifica - DELETE ```http://localhost:8080/publicaciones/1```
 

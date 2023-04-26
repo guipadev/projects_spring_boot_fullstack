@@ -1,5 +1,6 @@
 package com.api.rest.publicaciones.entitys;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Generated;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,6 +28,7 @@ public class Comentario extends AuditModel {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "publicacion_id", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
+    @OnDelete(action = OnDeleteAction.CASCADE) // Elimina todos los datos de las relaciones
+    @JsonIgnore // Se posible a la hora de deserializar y no serializar
     private Publicacion publicacion;
 }
