@@ -14,7 +14,7 @@
 	<name>personaBACKEND</name>
 	<description>SPRING BOOT CRUD + JPA + POSTGRESQL +REST + ANGULAR: Crear proyecto Spring Boot</description>
 	<properties>
-		<java.version>18</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
