@@ -1,26 +1,32 @@
-package yadev.persona.services;
+package yadev.persona.services.Impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import yadev.persona.entitys.Estado;
 import yadev.persona.repositorys.IEstadoRepository;
+import yadev.persona.services.IEstadoService;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class EstadoService {
+public class EstadoServiceImpl implements IEstadoService {
+
+    private final IEstadoRepository estadoRepository;
 
     @Autowired
-    private IEstadoRepository estadoRepository;
+    public EstadoServiceImpl(IEstadoRepository estadoRepository) {
+        this.estadoRepository = estadoRepository;
+    }
 
+    @Override
     public List<Estado> findAll() {
         return estadoRepository.findAll();
     }
 
-    // Metodo mostrar estados de acuerdo al pais selecionado
-    public List<Estado> findAllByCountry (Long id) {
+    @Override
+    public List<Estado> findAllByCountry(Long id) {
         List<Estado> estadosRespuesta = new ArrayList<>();
         List<Estado> estados = estadoRepository.findAll();
         for (int i = 0; i < estados.size(); i++) {
@@ -31,6 +37,7 @@ public class EstadoService {
         return estadosRespuesta;
     }
 
+    @Override
     public List<Estado> findAll(Sort sort) {
         return estadoRepository.findAll(sort);
     }

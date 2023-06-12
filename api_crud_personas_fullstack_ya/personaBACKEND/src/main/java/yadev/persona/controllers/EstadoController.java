@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import yadev.persona.entitys.Estado;
-import yadev.persona.services.EstadoService;
+import yadev.persona.services.Impl.EstadoServiceImpl;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import java.util.List;
 public class EstadoController {
 
     @Autowired
-    private EstadoService estadoService;
+    private EstadoServiceImpl estadoService;
 
     // Mostrar solo lo estados de acuerdo al país
     @GetMapping ("{id}")

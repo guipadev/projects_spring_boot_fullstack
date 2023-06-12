@@ -1,4 +1,4 @@
-package xyz.yadev.crud.model;
+package dev.guipa.crud.model;
 
 import lombok.Data;
 

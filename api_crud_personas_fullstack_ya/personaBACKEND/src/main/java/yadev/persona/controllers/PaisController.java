@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import yadev.persona.entitys.Pais;
-import yadev.persona.services.PaisService;
+import yadev.persona.services.Impl.PaisServiceImpl;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ import java.util.List;
 public class PaisController {
 
     @Autowired
-    private PaisService paisService;
+    private PaisServiceImpl paisService;
 
     @GetMapping
     private ResponseEntity<List<Pais>> getAllPaises() {

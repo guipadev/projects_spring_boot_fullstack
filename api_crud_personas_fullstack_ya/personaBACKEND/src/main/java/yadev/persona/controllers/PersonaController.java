@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import yadev.persona.entitys.Persona;
-import yadev.persona.services.PersonaService;
+import yadev.persona.services.Impl.PersonaServiceImpl;
 
 import java.net.URI;
 import java.util.List;
@@ -16,7 +16,7 @@ import java.util.List;
 public class PersonaController {
 
     @Autowired
-    private PersonaService personaService;
+    private PersonaServiceImpl personaService;
 
     @GetMapping
     private ResponseEntity<List<Persona>> getAllPersonas () {
