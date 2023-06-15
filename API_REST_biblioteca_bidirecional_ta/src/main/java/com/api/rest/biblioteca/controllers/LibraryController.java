@@ -1,7 +1,7 @@
-package com.api.rest.biblioteca.controller;
+package com.api.rest.biblioteca.controllers;
 
 import com.api.rest.biblioteca.entitys.Library;
-import com.api.rest.biblioteca.repository.LibraryRepository;
+import com.api.rest.biblioteca.repositorys.LibraryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
