@@ -1,7 +1,7 @@
 package com.api.rest.biblioteca.controllers;
 
 import com.api.rest.biblioteca.entitys.Library;
-import com.api.rest.biblioteca.repositorys.LibraryRepository;
+import com.api.rest.biblioteca.services.LibraryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -11,69 +11,48 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/library")
 public class LibraryController {
 
-    @Autowired
-    private LibraryRepository libraryRepository;
+    private final LibraryService libraryService;
 
-    // Uso paginacion
+    @Autowired
+    public LibraryController(LibraryService libraryService) {
+        this.libraryService = libraryService;
+    }
+
     @GetMapping
     public ResponseEntity<Page<Library>> listAllLibraries(Pageable pageable) {
-        return ResponseEntity.ok(libraryRepository.findAll(pageable));
+        Page<Library> libraries = libraryService.getAllLibraries(pageable);
+        return ResponseEntity.ok(libraries);
     }
 
     @PostMapping
     public ResponseEntity<Library> saveLibrary(@Valid @RequestBody Library library) {
-        Library libraryWasSave = libraryRepository.save(library);
-        // Del objeto creamos una nueva URI con el ID actual
+        Library savedLibrary = libraryService.saveLibrary(library);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-                .buildAndExpand(libraryWasSave.getId()).toUri();
+                .buildAndExpand(savedLibrary.getId()).toUri();
 
-        // Retornamos entidad o rta con objetos
-        return ResponseEntity.created(location).body(libraryWasSave);
+        return ResponseEntity.created(location).body(savedLibrary);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Library> editLibrary(@PathVariable Long id, @Valid @RequestBody Library library) {
-        Optional<Library> libraryOptional = libraryRepository.findById(id);
-
-        // Si no esta presente retornar que no se ha podido procesar
-        if(!libraryOptional.isPresent()) {
-            return ResponseEntity.unprocessableEntity().build();
-        }
-
-        library.setId(libraryOptional.get().getId());
-        libraryRepository.save(library);
-
+        Library editedLibrary = libraryService.editLibrary(id, library);
         return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Library> deleteLibrary(@PathVariable Long id) {
-        Optional<Library> libraryOptional = libraryRepository.findById(id);
-
-        if(!libraryOptional.isPresent()) {
-            return ResponseEntity.unprocessableEntity().build();
-        }
-
-        libraryRepository.delete(libraryOptional.get());
-
+        libraryService.deleteLibrary(id);
         return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Library> getLibraryById(@PathVariable Long id) {
-        Optional<Library> libraryOptional = libraryRepository.findById(id);
-
-        if(!libraryOptional.isPresent()) {
-            return ResponseEntity.unprocessableEntity().build();
-        }
-
-        return ResponseEntity.ok(libraryOptional.get());
+        Library library = libraryService.getLibraryById(id);
+        return ResponseEntity.ok(library);
     }
-
 }
