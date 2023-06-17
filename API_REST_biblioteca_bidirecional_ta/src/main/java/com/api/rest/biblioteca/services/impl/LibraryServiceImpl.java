@@ -1,6 +1,7 @@
 package com.api.rest.biblioteca.services.impl;
 
 import com.api.rest.biblioteca.entitys.Library;
+import com.api.rest.biblioteca.entitys.Dto.LibraryDTO;
 import com.api.rest.biblioteca.repositorys.LibraryRepository;
 import com.api.rest.biblioteca.services.LibraryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,25 +22,31 @@ public class LibraryServiceImpl implements LibraryService {
     }
 
     @Override
-    public Page<Library> getAllLibraries(Pageable pageable) {
-        return libraryRepository.findAll(pageable);
+    public Page<LibraryDTO> getAllLibraries(Pageable pageable) {
+        Page<Library> libraries = libraryRepository.findAll(pageable);
+        return libraries.map(this::convertToDTO);
     }
 
     @Override
-    public Library saveLibrary(Library library) {
-        return libraryRepository.save(library);
+    public LibraryDTO saveLibrary(LibraryDTO libraryDTO) {
+        Library library = convertToEntity(libraryDTO);
+        Library savedLibrary = libraryRepository.save(library);
+        return convertToDTO(savedLibrary);
     }
 
     @Override
-    public Library editLibrary(Long id, Library library) {
+    public LibraryDTO editLibrary(Long id, LibraryDTO libraryDTO) {
         Optional<Library> libraryOptional = libraryRepository.findById(id);
 
         if (!libraryOptional.isPresent()) {
             throw new IllegalArgumentException("Invalid library ID.");
         }
 
-        library.setId(libraryOptional.get().getId());
-        return libraryRepository.save(library);
+        Library library = libraryOptional.get();
+        library.setName(libraryDTO.getName());
+
+        Library updatedLibrary = libraryRepository.save(library);
+        return convertToDTO(updatedLibrary);
     }
 
     @Override
@@ -54,13 +61,27 @@ public class LibraryServiceImpl implements LibraryService {
     }
 
     @Override
-    public Library getLibraryById(Long id) {
+    public LibraryDTO getLibraryById(Long id) {
         Optional<Library> libraryOptional = libraryRepository.findById(id);
 
         if (!libraryOptional.isPresent()) {
             throw new IllegalArgumentException("Invalid library ID.");
         }
 
-        return libraryOptional.get();
+        Library library = libraryOptional.get();
+        return convertToDTO(library);
+    }
+
+    private LibraryDTO convertToDTO(Library library) {
+        LibraryDTO libraryDTO = new LibraryDTO();
+        libraryDTO.setId(library.getId());
+        libraryDTO.setName(library.getName());
+        return libraryDTO;
+    }
+
+    private Library convertToEntity(LibraryDTO libraryDTO) {
+        Library library = new Library();
+        library.setName(libraryDTO.getName());
+        return library;
     }
 }

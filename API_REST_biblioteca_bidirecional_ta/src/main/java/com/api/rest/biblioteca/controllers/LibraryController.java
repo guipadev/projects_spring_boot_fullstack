@@ -1,7 +1,7 @@
 package com.api.rest.biblioteca.controllers;
 
-import com.api.rest.biblioteca.entitys.Library;
-import com.api.rest.biblioteca.services.LibraryService;
+import com.api.rest.biblioteca.entitys.Dto.LibraryDTO;
+import com.api.rest.biblioteca.services.impl.LibraryServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -16,22 +16,22 @@ import java.net.URI;
 @RequestMapping("/api/library")
 public class LibraryController {
 
-    private final LibraryService libraryService;
+    private final LibraryServiceImpl libraryService;
 
     @Autowired
-    public LibraryController(LibraryService libraryService) {
+    public LibraryController(LibraryServiceImpl libraryService) {
         this.libraryService = libraryService;
     }
 
     @GetMapping
-    public ResponseEntity<Page<Library>> listAllLibraries(Pageable pageable) {
-        Page<Library> libraries = libraryService.getAllLibraries(pageable);
+    public ResponseEntity<Page<LibraryDTO>> listAllLibraries(Pageable pageable) {
+        Page<LibraryDTO> libraries = libraryService.getAllLibraries(pageable);
         return ResponseEntity.ok(libraries);
     }
 
     @PostMapping
-    public ResponseEntity<Library> saveLibrary(@Valid @RequestBody Library library) {
-        Library savedLibrary = libraryService.saveLibrary(library);
+    public ResponseEntity<LibraryDTO> saveLibrary(@Valid @RequestBody LibraryDTO libraryDTO) {
+        LibraryDTO savedLibrary = libraryService.saveLibrary(libraryDTO);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(savedLibrary.getId()).toUri();
 
@@ -39,20 +39,20 @@ public class LibraryController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Library> editLibrary(@PathVariable Long id, @Valid @RequestBody Library library) {
-        Library editedLibrary = libraryService.editLibrary(id, library);
+    public ResponseEntity<LibraryDTO> editLibrary(@PathVariable Long id, @Valid @RequestBody LibraryDTO libraryDTO) {
+        LibraryDTO editedLibrary = libraryService.editLibrary(id, libraryDTO);
         return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Library> deleteLibrary(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteLibrary(@PathVariable Long id) {
         libraryService.deleteLibrary(id);
         return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Library> getLibraryById(@PathVariable Long id) {
-        Library library = libraryService.getLibraryById(id);
-        return ResponseEntity.ok(library);
+    public ResponseEntity<LibraryDTO> getLibraryById(@PathVariable Long id) {
+        LibraryDTO libraryDTO = libraryService.getLibraryById(id);
+        return ResponseEntity.ok(libraryDTO);
     }
 }

@@ -1,6 +1,7 @@
 package com.api.rest.biblioteca.services.impl;
 
 import com.api.rest.biblioteca.entitys.Book;
+import com.api.rest.biblioteca.entitys.Dto.BookDTO;
 import com.api.rest.biblioteca.entitys.Library;
 import com.api.rest.biblioteca.repositorys.BookRepository;
 import com.api.rest.biblioteca.repositorys.LibraryRepository;
@@ -25,25 +26,28 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Page<Book> getAllBooks(Pageable pageable) {
-        return bookRepository.findAll(pageable);
+    public Page<BookDTO> getAllBooks(Pageable pageable) {
+        Page<Book> books = bookRepository.findAll(pageable);
+        return books.map(this::convertToDto);
     }
 
     @Override
-    public Book saveBook(Book book) {
-        Optional<Library> libraryOptional = libraryRepository.findById(book.getLibrary().getId());
+    public BookDTO saveBook(BookDTO bookDTO) {
+        Optional<Library> libraryOptional = libraryRepository.findById(bookDTO.getLibraryId());
 
         if (!libraryOptional.isPresent()) {
             throw new IllegalArgumentException("Invalid library ID.");
         }
 
+        Book book = convertToEntity(bookDTO);
         book.setLibrary(libraryOptional.get());
-        return bookRepository.save(book);
+        Book savedBook = bookRepository.save(book);
+        return convertToDto(savedBook);
     }
 
     @Override
-    public Book updateBook(Book book, Long id) {
-        Optional<Library> libraryOptional = libraryRepository.findById(book.getLibrary().getId());
+    public BookDTO updateBook(BookDTO bookDTO, Long id) {
+        Optional<Library> libraryOptional = libraryRepository.findById(bookDTO.getLibraryId());
 
         if (!libraryOptional.isPresent()) {
             throw new IllegalArgumentException("Invalid library ID.");
@@ -55,10 +59,12 @@ public class BookServiceImpl implements BookService {
             throw new IllegalArgumentException("Invalid book ID.");
         }
 
+        Book book = convertToEntity(bookDTO);
         book.setLibrary(libraryOptional.get());
         book.setId(existingBookOptional.get().getId());
 
-        return bookRepository.save(book);
+        Book updatedBook = bookRepository.save(book);
+        return convertToDto(updatedBook);
     }
 
     @Override
@@ -73,13 +79,28 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book getBookById(Long id) {
+    public BookDTO getBookById(Long id) {
         Optional<Book> bookOptional = bookRepository.findById(id);
 
         if (!bookOptional.isPresent()) {
             throw new IllegalArgumentException("Invalid book ID.");
         }
 
-        return bookOptional.get();
+        Book book = bookOptional.get();
+        return convertToDto(book);
+    }
+
+    private BookDTO convertToDto(Book book) {
+        BookDTO bookDTO = new BookDTO();
+        bookDTO.setId(book.getId());
+        bookDTO.setName(book.getName());
+        bookDTO.setLibraryId(book.getLibrary().getId());
+        return bookDTO;
+    }
+
+    private Book convertToEntity(BookDTO bookDTO) {
+        Book book = new Book();
+        book.setName(bookDTO.getName());
+        return book;
     }
 }

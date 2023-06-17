@@ -1,14 +1,13 @@
 package com.api.rest.biblioteca.services;
 
-import com.api.rest.biblioteca.entitys.Book;
+import com.api.rest.biblioteca.entitys.Dto.BookDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 public interface BookService {
-
-    Page<Book> getAllBooks(Pageable pageable);
-    Book saveBook(Book book);
-    Book updateBook(Book book, Long id);
+    Page<BookDTO> getAllBooks(Pageable pageable);
+    BookDTO saveBook(BookDTO bookDTO);
+    BookDTO updateBook(BookDTO bookDTO, Long id);
     void deleteBook(Long id);
-    Book getBookById(Long id);
+    BookDTO getBookById(Long id);
 }
