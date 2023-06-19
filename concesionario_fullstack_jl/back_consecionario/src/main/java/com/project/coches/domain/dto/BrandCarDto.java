@@ -1,8 +1,5 @@
-package com.project.coches.domain.pojo;
+package com.project.coches.domain.dto;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,7 +7,7 @@ import lombok.Setter;
  * Pojo de marca Coche
  */
 @Getter @Setter
-public class MarcaCochePojo {
+public class BrandCarDto {
 
     /**
      * Id de la marca

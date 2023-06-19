@@ -1,43 +1,42 @@
 package com.project.coches.persistance.mapper;
 
-import com.project.coches.domain.pojo.MarcaCochePojo;
-import com.project.coches.persistance.entity.MarcaCocheEntity;
+import com.project.coches.domain.dto.BrandCarDto;
+import com.project.coches.persistance.entity.BrandCarEntity;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-import java.awt.image.ComponentColorModel;
 import java.util.List;
 
 /**
  * Mapper que transforma objetos de MarcaCoche a pojos o entidades
  */
 @Mapper(componentModel = "spring")
-public interface IMarcaCocheMapper {
+public interface IBrandCarMapper {
 
     /**
-     * Convierte una entidad a un pojo de marca coche
+     * Convierte una entidad a un pojo/dto de marca coche
      * @param marcaEntity Entidad a convertir
      * @return Pojo convertido
      */
     @Mapping(source = "id", target = "id")
     @Mapping(source = "description", target = "description")
-    MarcaCochePojo toMarcaCochePojo(MarcaCocheEntity marcaEntity);
+    BrandCarDto toMarcaCocheDto(BrandCarEntity marcaEntity);
 
     // Esta parte podria no ir, ya que los nombre de var son iguales
     /**
      * Los ajustes anteriores se toman en cuenta y se invierten/biceversa
      * Convierte un pojo a una entidad de marca coche
-     * @param marcaPojo Pojo a convertir
+     * @param marcaDto Pojo a convertir
      * @return Entity convertido
      */
     @InheritInverseConfiguration
-    MarcaCocheEntity toMarcaCocheEntity(MarcaCochePojo marcaPojo);
+    BrandCarEntity toMarcaCocheEntity(BrandCarDto marcaDto);
 
     /**
-     * Retorna una lista de marcas coches transformada a pojo de una lista de entidades
+     * Retorna una lista de marcas coches transformada a pojo/dto de una lista de entidades
      * @param marcasCocheEntity Entidad a transformar
      * @return Lista transformada
      */
-    List<MarcaCochePojo> toMarcasCochePojo(List<MarcaCocheEntity> marcasCocheEntity);
+    List<BrandCarDto> toMarcasCocheDto(List<BrandCarEntity> marcasCocheEntity);
 }
