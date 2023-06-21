@@ -5,6 +5,9 @@ import com.project.coches.domain.dto.BrandCarDto;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Interfaz de repositorio marca coche
+ */
 public interface IBrandCarRepository {
 
     /**

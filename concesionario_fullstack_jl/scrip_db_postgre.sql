@@ -11,6 +11,7 @@ CREATE TABLE IF NOT EXISTS cliente (
   correo VARCHAR(255) NOT NULL,
   activo TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   numero_celular DECIMAL(19, 0) NULL,
+  contrasenia VARCHAR(255),
   PRIMARY KEY (cedula)
 );
 
