@@ -4,6 +4,13 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/consecionario
+    url: jdbc:postgresql://localhost:5432/concesionario
     username: ${USER}
     password: ${PASS}
+server:
+  servlet:
+    context-path: /api
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+

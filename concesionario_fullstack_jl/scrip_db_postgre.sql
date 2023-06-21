@@ -17,9 +17,8 @@ CREATE TABLE IF NOT EXISTS cliente (
 
 -- Crear tabla marca_coche
 CREATE TABLE IF NOT EXISTS marca_coche (
-  id INT NOT NULL,
-  descripcion VARCHAR(255) NULL,
-  PRIMARY KEY (id)
+  id SERIAL PRIMARY KEY,
+  descripcion VARCHAR(255) NULL
 );
 
 
