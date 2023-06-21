@@ -5,7 +5,7 @@ import com.project.coches.domain.dto.BrandCarDto;
 import java.util.List;
 import java.util.Optional;
 
-public interface IBranCarRepository {
+public interface IBrandCarRepository {
 
     /**
      * Devuelve na lista con todas las marcas de coches
@@ -32,7 +32,4 @@ public interface IBranCarRepository {
      * @param idBrandCar Id del marca coche a eliminar
      */
     void delete(Integer idBrandCar);
-
-
-
 }

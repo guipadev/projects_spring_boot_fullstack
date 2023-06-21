@@ -1,7 +1,7 @@
 package com.project.coches.persistance.repository;
 
 import com.project.coches.domain.dto.BrandCarDto;
-import com.project.coches.domain.repository.IBranCarRepository;
+import com.project.coches.domain.repository.IBrandCarRepository;
 import com.project.coches.persistance.entity.BrandCarEntity;
 import com.project.coches.persistance.mapper.IBrandCarMapper;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +16,7 @@ import java.util.Optional;
  */
 @RequiredArgsConstructor // Crear constructor con los atributos final
 @Repository
-public class BrandCarRepository implements IBranCarRepository {
+public class BrandCarRepository implements IBrandCarRepository {
 
     /**
      * Crud de marca coche
