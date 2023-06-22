@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS cliente (
   cedula VARCHAR(255) NOT NULL,
   nombre_completo VARCHAR(255) NOT NULL,
   correo VARCHAR(255) NOT NULL,
-  activo TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  activo INTEGER NOT NULL,
   numero_celular DECIMAL(19, 0) NULL,
   contrasenia VARCHAR(255),
   PRIMARY KEY (cedula)
