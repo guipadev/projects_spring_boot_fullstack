@@ -13,7 +13,6 @@ import lombok.Setter;
 public class CustomerEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "cedula")
     private String cardId;
 

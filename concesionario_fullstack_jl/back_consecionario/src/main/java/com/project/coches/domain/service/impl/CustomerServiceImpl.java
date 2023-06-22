@@ -1,12 +1,13 @@
 package com.project.coches.domain.service.impl;
 
 import com.project.coches.domain.dto.CustomerDto;
+import com.project.coches.domain.dto.ResponseCustomerDto;
 import com.project.coches.domain.repository.ICustomerRepository;
 import com.project.coches.domain.service.ICustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.sql.Struct;
+import java.security.SecureRandom;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,8 +35,17 @@ public class CustomerServiceImpl implements ICustomerService {
     }
 
     @Override
-    public CustomerDto save(CustomerDto newCustomer) {
-        return iCustomerRepository.save(newCustomer);
+    public ResponseCustomerDto save(CustomerDto newCustomer) {
+        String passwordGenerated = generateRandomPassword(8);
+
+        newCustomer.setPassword(passwordGenerated);
+        newCustomer.setActive(1);
+
+        iCustomerRepository.save(newCustomer);
+
+        ResponseCustomerDto responseCustomerDto;
+
+        return new ResponseCustomerDto(passwordGenerated);
     }
 
     @Override
@@ -58,5 +68,21 @@ public class CustomerServiceImpl implements ICustomerService {
         return true;
     }
 
+    // Método genera contraseña aleatoria alfanumerica de una longitud especificada
+    private String generateRandomPassword(int longitud) {
+
+        // Rango ASCII - Alfanumerico (0-9, a-z, A-Z)
+        final String caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        SecureRandom random = new SecureRandom();
+        StringBuilder stringBuilder = new StringBuilder();
+
+        // Cada iteración elige aleatoriamente un caracter del rango ASCII y lo agrega a la instancia 'StringBuilder'
+        for (int i = 0; i < longitud; i++){
+            int randomIndex = random.nextInt(caracteres.length());
+            stringBuilder.append(caracteres.charAt(randomIndex));
+        }
+        return stringBuilder.toString();
+    }
 
 }

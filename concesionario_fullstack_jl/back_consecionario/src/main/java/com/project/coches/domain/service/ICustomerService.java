@@ -1,6 +1,7 @@
 package com.project.coches.domain.service;
 
 import com.project.coches.domain.dto.CustomerDto;
+import com.project.coches.domain.dto.ResponseCustomerDto;
 
 import java.util.List;
 import java.util.Optional;
@@ -36,7 +37,7 @@ public interface ICustomerService {
      * @param newCustomer cliente a guardar
      * @return cliente guardado
      */
-    CustomerDto save(CustomerDto newCustomer);
+    ResponseCustomerDto save(CustomerDto newCustomer);
 
     /**
      * Actualizar cliente

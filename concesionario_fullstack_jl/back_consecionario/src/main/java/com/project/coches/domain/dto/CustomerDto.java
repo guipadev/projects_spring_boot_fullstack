@@ -2,11 +2,13 @@ package com.project.coches.domain.dto;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 /**
  * Dto de un cliente
  */
 @Getter @Setter
+@ToString
 public class CustomerDto {
 
     private String cardId;

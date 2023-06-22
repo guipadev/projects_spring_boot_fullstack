@@ -6,7 +6,7 @@ SET search_path TO concesionario;
 
 -- Crear tabla cliente
 CREATE TABLE IF NOT EXISTS cliente (
-  cedula INT NOT NULL,
+  cedula VARCHAR(255) NOT NULL,
   nombre_completo VARCHAR(255) NOT NULL,
   correo VARCHAR(255) NOT NULL,
   activo TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS coches (
 -- Crear tabla compras
 CREATE TABLE IF NOT EXISTS compras (
   numero_factura INT NOT NULL,
-  cliente_cedula INT NOT NULL,
+  cliente_cedula VARCHAR(255) NOT NULL,
   fecha DATE NOT NULL,
   total INT NOT NULL,
   PRIMARY KEY (numero_factura),

@@ -2,10 +2,8 @@ package com.project.coches.controller;
 
 import com.project.coches.domain.dto.BrandCarDto;
 import com.project.coches.domain.service.IBrandCarService;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +14,7 @@ import java.util.List;
  */
 @RequiredArgsConstructor
 @RestController
-@RequestMapping(path = "/marcas-coches")
+@RequestMapping(path = "/brands-car")
 public class BrandCarController {
 
     /**
