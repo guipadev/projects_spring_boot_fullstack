@@ -4,6 +4,7 @@ import com.project.coches.domain.dto.CustomerDto;
 import com.project.coches.domain.dto.ResponseCustomerDto;
 import com.project.coches.domain.repository.ICustomerRepository;
 import com.project.coches.domain.service.ICustomerService;
+import com.project.coches.exception.EmailValidationException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -36,14 +37,19 @@ public class CustomerServiceImpl implements ICustomerService {
 
     @Override
     public ResponseCustomerDto save(CustomerDto newCustomer) {
+
+        // Expresión regular para validar el formato del correo electrónico
+        String emailRegex = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
+
+        if (!newCustomer.getEmail().matches(emailRegex)) {
+            throw new EmailValidationException();
+        }
+
         String passwordGenerated = generateRandomPassword(8);
 
         newCustomer.setPassword(passwordGenerated);
         newCustomer.setActive(1);
-
         iCustomerRepository.save(newCustomer);
-
-        ResponseCustomerDto responseCustomerDto;
 
         return new ResponseCustomerDto(passwordGenerated);
     }
