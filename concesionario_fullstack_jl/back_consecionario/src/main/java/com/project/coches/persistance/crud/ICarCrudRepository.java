@@ -10,5 +10,5 @@ public interface ICarCrudRepository extends JpaRepository<CarEntity, Integer> {
     // Query method
     List<CarEntity> findAllByCodeCar(Integer id);
 
-    List<CarEntity> findAllByPriceLessThanOrderByPriceDesc(Double price);
+    List<CarEntity> findAllByPriceLessThanEqualOrderByPriceAsc(Double price);
 }

@@ -31,7 +31,7 @@ public class CarRepository implements ICarRepository {
 
     @Override
     public List<CarDto> getCarsByPriceLessThan(Double price) {
-        return iCarMapper.toCarsDto(iCarCrudRepository.findAllByPriceLessThanOrderByPriceDesc(price));
+        return iCarMapper.toCarsDto(iCarCrudRepository.findAllByPriceLessThanEqualOrderByPriceAsc(price));
     }
 
     @Override
