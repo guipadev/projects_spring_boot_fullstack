@@ -26,7 +26,7 @@ public class CarRepository implements ICarRepository {
 
     @Override
     public List<CarDto> getByIdCar(Integer idCar) {
-        return iCarMapper.toCarsDto(iCarCrudRepository.findAllByCarId(idCar));
+        return iCarMapper.toCarsDto(iCarCrudRepository.findAllByCodeCar(idCar));
     }
 
     @Override

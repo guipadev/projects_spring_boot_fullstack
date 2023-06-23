@@ -41,7 +41,7 @@ public class CarEntity {
     @Column(name = "cilindraje")
     private Double engineDisplacement;
 
-    @Column(name = "transmision")
+    @Column(name = "trasmicion")
     private String transmission;
 
     @Column(name = "tipo_combustible")

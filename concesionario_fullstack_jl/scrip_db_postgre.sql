@@ -25,27 +25,26 @@ CREATE TABLE IF NOT EXISTS marca_coche (
 
 -- Crear tabla coches
 CREATE TABLE IF NOT EXISTS coches (
-  codigo_coche INTEGER NOT NULL,
+  codigo_coche SERIAL PRIMARY KEY,
   marca_coche_id INT NOT NULL,
   referencia VARCHAR(255) NOT NULL,
   precio DECIMAL(10, 2) NOT NULL,
   anio_modelo DECIMAL(10, 2) NOT NULL,
   color VARCHAR(255) NOT NULL,
-  numero_caballos_fuerza DECIMAL(10, 2) NULL,
-  cantidad_puertas DECIMAL(10, 2) NULL,
-  cilindraje DECIMAL(10, 2) NULL,
-  trasmicion VARCHAR(255) NULL,
-  tipo_combustible VARCHAR(255) NULL,
-  cantidad_asientos DECIMAL(10, 2) NULL,
-  traccion DECIMAL(10, 2) NULL,
-  direccion VARCHAR(255) NULL,
-  categoria VARCHAR(255) NULL,
-  ruta_imagen VARCHAR(255) NULL,
-  PRIMARY KEY (codigo_coche),
+  numero_caballos_fuerza DECIMAL(10, 2),
+  cantidad_puertas DECIMAL(10, 2),
+  cilindraje DECIMAL(10, 2),
+  trasmicion VARCHAR(255),
+  tipo_combustible VARCHAR(255),
+  cantidad_asientos DECIMAL(10, 2),
+  traccion DECIMAL(10, 2),
+  direccion VARCHAR(255),
+  categoria VARCHAR(255),
+  ruta_imagen VARCHAR(255),
   FOREIGN KEY (marca_coche_id)
     REFERENCES marca_coche (id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
 );
 
 
