@@ -4,14 +4,12 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * Dto del guardado de los carros de una compra
+ * Dto de la consulta de los carros de una compra
  */
 @Getter @Setter
-public class CarPurchaseRequestDto {
+public class CarPurchaseResponseDto {
 
-    private Integer purchaseNumberBill;
-
-    private Integer codeCar;
+    private String referenceCar;
 
     private Integer quantity;
 
