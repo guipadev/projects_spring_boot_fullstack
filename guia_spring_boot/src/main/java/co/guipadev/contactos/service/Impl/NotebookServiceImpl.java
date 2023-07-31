@@ -21,12 +21,20 @@ import java.util.List;
 public class NotebookServiceImpl implements INotebookService {
 
     /** Repositorio de Contacto */
-    @Autowired
-    private ContactRepository contactoRepository;
+    private final  ContactRepository contactoRepository;
 
     /** Repositorio de Telefono */
-    @Autowired
-    private PhoneRepository telefonoRepository;
+    private final PhoneRepository telefonoRepository;
+
+    /**
+     * Constructor inicial inyeccion depedencias
+     * @param contactoRepository
+     * @param telefonoRepository
+     */
+    public NotebookServiceImpl(ContactRepository contactoRepository, PhoneRepository telefonoRepository) {
+        this.contactoRepository = contactoRepository;
+        this.telefonoRepository = telefonoRepository;
+    }
 
     /** Devuelve una lista de Contactos con todos contactos del sistema */
     @Override

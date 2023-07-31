@@ -11,8 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
-@AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
 @Entity
@@ -24,6 +22,7 @@ public class Contact implements Serializable {
      */
     @Serial
     private static final long serialVersionUID = 1L;
+
 
     /**
      * Identificador de la tupla
@@ -64,7 +63,7 @@ public class Contact implements Serializable {
             fetch = FetchType.EAGER,
             targetEntity = Phone.class,
             cascade = CascadeType.REMOVE,
-            mappedBy = "contact"
+            mappedBy = "contacto"
     )
     @JsonManagedReference
     private List<Phone> telefonos = new ArrayList<>();

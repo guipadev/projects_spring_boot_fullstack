@@ -2,7 +2,6 @@ package co.guipadev.contactos.service;
 
 import co.guipadev.contactos.entity.Contact;
 import co.guipadev.contactos.entity.Phone;
-import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Sort;
 
 import java.util.List;
@@ -12,21 +11,17 @@ import java.util.List;
  */
 public interface INotebookService {
 
-    /**
-     * Devuelve una lista de Contactos con todos contactos del sistema
-     */
+    /** Devuelve una lista de Contactos con todos contactos del sistema */
     public List<Contact> getList();
-
-    @Transactional(readOnly = true)
-    List<Contact> getList(String field, Sort.Direction order);
 
     /**
      * Devuelve una lista de Contactos con todos contactos del sistema ordenados por el campo indicado
      * (nombre o apellido) ya sea ascendente o descendente
+     *
      * @param field campo por el cual ordenar
      * @param order método de ordenado ASC o DESC
      * @return Lista de contactos
-     /
+     */
     public List<Contact> getList(String field, Sort.Direction order);
 
     /**
@@ -38,6 +33,7 @@ public interface INotebookService {
 
     /**
      * Crea un contacto en el sistema
+     *
      * @param contacto Objeto del contacto a crear
      * @return Objeto del contacto creado
      */
