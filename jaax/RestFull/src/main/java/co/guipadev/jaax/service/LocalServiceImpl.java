@@ -1,6 +1,7 @@
 package co.guipadev.jaax.service;
 
 import co.guipadev.jaax.entity.Local;
+import co.guipadev.jaax.error.LocalNotFoundException;
 import co.guipadev.jaax.repository.LocalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -62,5 +63,16 @@ public class LocalServiceImpl implements LocalService {
     @Override
     public Optional<Local> findByNameIgnoreCase(String name) {
         return localRepository.findByNameIgnoreCase(name);
+    }
+
+    @Override
+    public Local findLocalById(Long id) throws LocalNotFoundException {
+
+        Optional<Local> local = localRepository.findById(id);
+
+        if(!local.isPresent()) {
+            throw new LocalNotFoundException("Local is not available");
+        }
+        return local.get();
     }
 }

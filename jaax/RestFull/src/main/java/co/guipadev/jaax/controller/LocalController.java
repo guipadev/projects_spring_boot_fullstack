@@ -1,6 +1,7 @@
 package co.guipadev.jaax.controller;
 
 import co.guipadev.jaax.entity.Local;
+import co.guipadev.jaax.error.LocalNotFoundException;
 import co.guipadev.jaax.service.LocalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,11 @@ public class LocalController {
 
     @Autowired
     LocalService localService;
+
+    @GetMapping("/findLocalById/{id}")
+    Local findLocalById(@PathVariable Long id) throws LocalNotFoundException {
+        return localService.findLocalById(id);
+    }
 
     @GetMapping("/findLocalByNameWithJPQL/{name}")
     Optional<Local> findLocalByNameWithJPQL(@PathVariable String name) {

@@ -16,6 +16,5 @@ public interface LocalRepository extends JpaRepository<Local, Long> {
 
     // Consulta con Inversión de Control
     Optional<Local> findByName(String name);
-
     Optional<Local> findByNameIgnoreCase(String name);
 }
