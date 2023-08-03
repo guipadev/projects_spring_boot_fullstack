@@ -3,6 +3,7 @@ package co.guipadev.jaax.service;
 import co.guipadev.jaax.entity.Local;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface LocalService {
 
@@ -13,4 +14,10 @@ public interface LocalService {
     Local updateLocal(Long id, Local local);
 
     void deleteLocal(Long id);
+
+    Optional<Local> findLocalByNameWithJPQL(String name);
+
+    Optional<Local> findByName(String name);
+
+    Optional<Local> findByNameIgnoreCase(String name);
 }
