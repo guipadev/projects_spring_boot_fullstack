@@ -3,6 +3,7 @@ package co.guipadev.jaax.controller;
 import co.guipadev.jaax.entity.Local;
 import co.guipadev.jaax.error.LocalNotFoundException;
 import co.guipadev.jaax.service.LocalService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,7 +42,7 @@ public class LocalController {
     }
 
     @PostMapping("/saveLocal")
-    public Local saveLocal(@RequestBody Local local) {
+    public Local saveLocal(@Valid @RequestBody Local local) {
         return localService.saveLocal(local);
     }
 
