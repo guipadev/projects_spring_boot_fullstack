@@ -3,7 +3,9 @@ server:
 spring:
   profiles:
     active: prod
+
 ---
+
 spring:
   config:
     activate:
@@ -21,7 +23,9 @@ spring:
   sql:
     init:
       platform: postgres
+
 ---
+
 spring:
   config:
     activate:
@@ -39,7 +43,9 @@ spring:
   sql:
     init:
       platform: postgres
+
 ---
+
 spring:
   config:
     activate:
