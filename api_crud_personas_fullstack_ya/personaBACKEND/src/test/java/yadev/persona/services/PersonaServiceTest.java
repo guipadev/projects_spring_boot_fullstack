@@ -7,6 +7,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import yadev.persona.entitys.Persona;
 import yadev.persona.repositorys.IPersonaRepository;
+import yadev.persona.services.Impl.PersonaServiceImpl;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -18,7 +19,7 @@ class PersonaServiceTest {
     private IPersonaRepository personaRepository;
 
     @InjectMocks
-    private PersonaService personaService;
+    private PersonaServiceImpl personaService;
 
     // Crear metodo persona si se necesita en varios casos de prueba
     private Persona persona;
@@ -28,8 +29,8 @@ class PersonaServiceTest {
         MockitoAnnotations.initMocks(this);
 
         persona = new Persona();
-        persona.setId(new Long(1));
-        persona.setNombre("Yo Androide");
+        persona.setId(1L);
+        persona.setNombre("Cristiano Ronaldo");
 
     }
 

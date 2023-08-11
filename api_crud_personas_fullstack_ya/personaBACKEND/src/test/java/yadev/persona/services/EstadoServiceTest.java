@@ -9,6 +9,7 @@ import org.springframework.data.domain.Sort;
 import yadev.persona.entitys.Estado;
 import yadev.persona.entitys.Pais;
 import yadev.persona.repositorys.IEstadoRepository;
+import yadev.persona.services.Impl.EstadoServiceImpl;
 
 import java.util.Arrays;
 
@@ -24,9 +25,10 @@ class EstadoServiceTest {
 
     // Declaramos el servicio e inyectamos
     @InjectMocks
-    private EstadoService estadoService;
+    private EstadoServiceImpl estadoService;
 
     // Creamos var de lista de estado que es un resultado a devolver del servicio
+    // Lo hacemos por practica de poder reutilizar en los test
     private Estado estado;
 
     @BeforeEach
@@ -39,7 +41,7 @@ class EstadoServiceTest {
         estado = new Estado();
         estado.setPais(new Pais());
         estado.setNombre("Polombia");
-        estado.setId(new Long(1l));
+        estado.setId(1L);
 
     }
 

@@ -40,7 +40,26 @@ Antes de ejecutarlo debes ingresar al archivo de scripts ```personaSCRIPT_BD_pai
 - Eliminar personas - DELETE + Id ```http://localhost:8080/personas/5```
 
 - Actualizar personas - PUT + Id ```http://localhost:8080/personas/3```
-
+```
+{
+        "id": 4,
+        "nombre": "Jose Alfredo",
+        "apellido": "Jimenez",
+        "edad": 32,
+        "pais": {
+            "id": 42,
+            "nombre": "México"
+        },
+        "estado": {
+            "id": 1700,
+            "pais": {
+                "id": 82,
+                "nombre": "Colombia"
+            },
+            "nombre": "Antioquia"
+        }
+    },
+```
 ## Visualización proyecto
 
 - Formulario para diligenciar datos de la persona, automaticamente trae de BD el pais y estado. Apareceran datos en caso de haber registros:
