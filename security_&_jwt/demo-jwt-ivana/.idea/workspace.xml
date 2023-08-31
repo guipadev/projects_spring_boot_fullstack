@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dcc09fcc-17e2-4eab-9614-855326b6e954" name="Changes" comment="" />
+    <list default="true" id="dcc09fcc-17e2-4eab-9614-855326b6e954" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../Resolucion_Error_CORS_App_SpringBoot_Angular&#10;/back/src/main/java/com/yom/cors/back/controllers/GreetingsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Resolucion_Error_CORS_App_SpringBoot_Angular&#10;/back/src/main/java/com/yom/cors/back/dtos/ContentDto.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,9 +36,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="2Tzeot7JyOeqUrLiTTarkfzqvo4" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
