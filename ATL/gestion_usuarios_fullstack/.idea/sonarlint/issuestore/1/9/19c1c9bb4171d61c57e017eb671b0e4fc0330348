@@ -1,0 +1,16 @@
+
+c
+java:S4488"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(ÜıÒøùÿÿÿÿ
+A
+java:S1168"+Return an empty collection instead of null.(¥¹ï
+V
+java:S4684%"@Replace this persistent entity with a simple POJO or DTO object.(·Ä°ì
+e
+java:S4488$"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(ã»Ö‰øÿÿÿÿ
+d
+java:S44880"NReplace "@RequestMapping(method = RequestMethod.DELETE)" with "@DeleteMapping"(õØ’ö
+]
+java:S4488<"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(¤Ö‚
+Q	java:S125R"<This block of commented-out lines of code should be removed.(àî­ß
+F
+java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ
