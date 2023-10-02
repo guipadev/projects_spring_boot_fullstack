@@ -4,9 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
+import org.springframework.http.HttpStatus;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -14,8 +12,7 @@ import javax.validation.constraints.NotBlank;
 @Setter
 public class MessageDto {
 
-    @NotBlank(message = "product name is mandatory")
-    private String name;
-    @Min(value = 1, message = "product price is mandatory")
-    private int price;
+    private HttpStatus status;
+    private String message;
+
 }

@@ -23,6 +23,7 @@ public class StudentServiceImpl implements IStudentService {
 
     @Autowired
     public StudentServiceImpl(IStudentRepository studentRepository) {
+
         this.studentRepository = studentRepository;
     }
 

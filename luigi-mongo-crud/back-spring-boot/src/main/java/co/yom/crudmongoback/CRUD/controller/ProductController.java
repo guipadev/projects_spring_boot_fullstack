@@ -3,10 +3,11 @@ package co.yom.crudmongoback.CRUD.controller;
 import co.yom.crudmongoback.CRUD.service.ProductService;
 import co.yom.crudmongoback.CRUD.dto.ProductDto;
 import co.yom.crudmongoback.CRUD.entity.Product;
+import co.yom.crudmongoback.global.dto.MessageDto;
 import co.yom.crudmongoback.global.exceptions.AttributeException;
 import co.yom.crudmongoback.global.exceptions.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,27 +23,32 @@ public class ProductController {
 
     @GetMapping
     public ResponseEntity<List<Product>> getAll() {
-
         return ResponseEntity.ok(productService.getAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Product> getOne(@Valid @PathVariable("id") int id) throws ResourceNotFoundException {
+    public ResponseEntity<Product> getOne(@PathVariable("id") int id) throws ResourceNotFoundException {
         return ResponseEntity.ok(productService.getOne(id));
     }
 
     @PostMapping
-    public ResponseEntity<Product> save(@RequestBody ProductDto dto) throws AttributeException {
-        return ResponseEntity.ok(productService.save(dto));
+    public ResponseEntity<MessageDto> save(@Valid @RequestBody ProductDto dto) throws AttributeException {
+        Product product = productService.save(dto);
+        String message = "product " + product.getName() + " have been saved";
+        return ResponseEntity.ok(new MessageDto(HttpStatus.OK, message));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Product> update(@PathVariable("id") int id, @Valid @RequestBody ProductDto dto) throws ResourceNotFoundException, AttributeException {
-        return ResponseEntity.ok(productService.update(id, dto));
+    public ResponseEntity<MessageDto> update(@PathVariable("id") int id, @Valid @RequestBody ProductDto dto) throws ResourceNotFoundException, AttributeException {
+        Product product = productService.update(id, dto);
+        String message = "product " + product.getName() + " have been updated";
+        return ResponseEntity.ok(new MessageDto(HttpStatus.OK, message));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Product> delete(@PathVariable("id") int id) throws ResourceNotFoundException {
-        return ResponseEntity.ok(productService.delete(id));
+    public ResponseEntity<MessageDto> delete(@PathVariable("id") int id) throws ResourceNotFoundException {
+        Product product = productService.delete(id);
+        String message = "product " + product.getName() + " have been deleted";
+        return ResponseEntity.ok(new MessageDto(HttpStatus.OK, message));
     }
 }
