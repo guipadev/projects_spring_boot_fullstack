@@ -8,27 +8,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
-// components
+// External
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { ToastrModule } from 'ngx-toastr';
+
+// Components
 import { ListComponent } from './product/list.component';
 import { DetailComponent } from './product/detail.component';
 import { CreateComponent } from './product/create.component';
 import { UpdateComponent } from './product/update.component';
-import { MenuComponent } from './menu/menu.component';
-
-// external
-import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
-import { ToastrModule } from 'ngx-toastr';
-
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ListComponent,
-    DetailComponent,
-    CreateComponent,
-    UpdateComponent,
-    MenuComponent
-  ],
+  declarations: [AppComponent, ListComponent, DetailComponent, CreateComponent, UpdateComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -39,6 +30,6 @@ import { ToastrModule } from 'ngx-toastr';
     FormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
