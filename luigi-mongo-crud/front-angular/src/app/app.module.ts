@@ -17,9 +17,10 @@ import { ListComponent } from './product/list.component';
 import { DetailComponent } from './product/detail.component';
 import { CreateComponent } from './product/create.component';
 import { UpdateComponent } from './product/update.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
-  declarations: [AppComponent, ListComponent, DetailComponent, CreateComponent, UpdateComponent],
+  declarations: [AppComponent, ListComponent, DetailComponent, CreateComponent, UpdateComponent, MenuComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
