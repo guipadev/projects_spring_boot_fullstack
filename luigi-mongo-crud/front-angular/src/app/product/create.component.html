@@ -3,8 +3,8 @@
   <div class="row mt-5">
     <div class="col-md-4 mx-auto">
       <h4 class="text-center">Create Product</h4>
-      <form novalidate #f="ngForm">
-        <!-- (ngSubmit)="onCreate()" -->
+      <form novalidate #f="ngForm" (ngSubmit)="onCreate()">
+        <!-- #f campos esten vacios no son validos por eso required-->
         <div class="mb-3">
           <input
             type="text"
@@ -14,7 +14,8 @@
             placeholder="product name"
             autocomplete="off"
             required
-          /><!-- [(ngModel)]="name" -->
+            [(ngModel)]="name"
+          />
         </div>
         <div class="mb-3">
           <input
@@ -25,12 +26,14 @@
             placeholder="product price"
             autocomplete="off"
             required
-          /><!--[(ngModel)]="price"-->
+            [(ngModel)]="price"
+          />
         </div>
         <button
           class="btn btn-outline-success w-100 mb-3"
           [disabled]="!f.valid"
         >
+          <!--deshabilitado si el formulario no es valido-->
           <i class="fas fa-plus-circle"></i> Create
         </button>
         <button class="btn btn-outline-primary w-100" routerLink="/">

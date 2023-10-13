@@ -18,18 +18,22 @@ export class ProductService {
     return this.httpClient.get<Product[]>(this.productURL);
   }
 
+  // Recibir un producto en especifico
   public detail(id: number): Observable<Product> {
     return this.httpClient.get<Product>(this.productURL + `/${id}`);
   }
 
+  // crear producto
   public create(product: Product): Observable<any> {
     return this.httpClient.post<any>(this.productURL, product);
   }
 
+  // actualizar producto
   public update(id: number, product: Product): Observable<any> {
     return this.httpClient.put<any>(this.productURL + `/${id}`, product);
   }
 
+  // eliminar producto
   public delete(id: number): Observable<any> {
     return this.httpClient.delete<any>(this.productURL + `/${id}`);
   }

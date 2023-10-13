@@ -12,9 +12,11 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./list.component.css'],
 })
 export class ListComponent implements OnInit {
+  // Necesitamos recibir un array de productos
   products: Product[] = [];
 
   constructor(
+    // Inyectamos el servicio y lo necesario
     private productService: ProductService,
     private toast: ToastrService,
     //private messageService: MessageService,
@@ -22,6 +24,7 @@ export class ListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    // Invocamos para inicializar el método
     this.getProducts();
   }
 

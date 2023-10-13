@@ -1,11 +1,10 @@
 <app-menu></app-menu>
-<div class="container">
-  <!-- *ngIf="product" -->
+<div class="container" *ngIf="product">
   <div class="row mt-5">
     <div class="col-md-4 mx-auto">
       <h4 class="text-center">Update Product</h4>
-      <form novalidate #f="ngForm">
-        <!-- (ngSubmit)="onUpdate()" -->
+      <form novalidate #f="ngForm" (ngSubmit)="onUpdate()">
+        <!-- #f form no valido campos vacios -->
         <div class="mb-3">
           <input
             type="text"
@@ -15,7 +14,8 @@
             placeholder="product name"
             autocomplete="off"
             required
-          /><!-- [(ngModel)]="product.name" -->
+            [(ngModel)]="product.name"
+          />
         </div>
         <div class="mb-3">
           <input
@@ -26,7 +26,8 @@
             placeholder="product price"
             autocomplete="off"
             required
-          /><!-- [(ngModel)]="product.price" -->
+            [(ngModel)]="product.price"
+          />
         </div>
         <button
           class="btn btn-outline-success w-100 mb-3"
