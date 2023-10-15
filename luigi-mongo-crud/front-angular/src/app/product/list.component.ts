@@ -16,7 +16,6 @@ export class ListComponent implements OnInit {
   products: Product[] = [];
 
   constructor(
-    // Inyectamos el servicio y lo necesario
     private productService: ProductService,
     private toast: ToastrService,
     private storageService: StorageService,
@@ -24,7 +23,6 @@ export class ListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Invocamos para inicializar el método
     this.getProducts();
   }
 
@@ -44,10 +42,10 @@ export class ListComponent implements OnInit {
 
   onDelete(id: number): void {
     Swal.fire({
-      title: 'Está seguro?',
-      text: 'No se puede deshacer',
+      title: 'Are you sure?',
+      text: 'You cannot undo',
       icon: 'warning',
-      showCancelButton: true, // ver boton de cancelar
+      showCancelButton: true,
       confirmButtonText: 'OK',
       cancelButtonText: 'Cancel',
     }).then((result) => {
