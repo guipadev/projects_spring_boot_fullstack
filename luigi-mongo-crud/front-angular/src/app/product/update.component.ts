@@ -11,11 +11,13 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
   templateUrl: './update.component.html',
   styleUrls: ['./update.component.css'],
 })
-export class UpdateComponent implements OnInit, OnDestroy {
+export class UpdateComponent implements OnInit {
   // Los campos a actualizar del form
-  product!: Product;
+  id!: number;
+  name!: string;
+  price!: number;
 
-  subscription: Subscription | undefined;
+  //product!: Product;
 
   // Inyectamos servicios y demas
   constructor(
@@ -31,7 +33,9 @@ export class UpdateComponent implements OnInit, OnDestroy {
   }
 
   onUpdate(): void {
-    this.productService.update(this.product.id, this.product).subscribe(
+    const product = new Product(this.name, this.price);
+
+    this.productService.update(this.id, product).subscribe(
       (data) => {
         this.toast.success(data.message, 'OK', {
           timeOut: 3000,
@@ -51,38 +55,7 @@ export class UpdateComponent implements OnInit, OnDestroy {
   getProduct(): void {
     // acceder al elemento con el parametro
     const id = this.activatedRoute.snapshot.params['id'];
-    // acceder al metodo del servicio
-    this.productService.detail(id).subscribe(
-      (data) => {
-        this.product = data;
-        console.log(this.product);
-      },
-      (err) => {
-        this.toast.error(err.error.message, 'Error', {
-          timeOut: 3000,
-          positionClass: 'toast-top-center',
-        });
-        this.router.navigate(['']);
-      }
-    );
-  }
-
-  /*
-  getProduct(): void {
-    this.subscription = this.messageService.getMessage().subscribe(
-      data => {
-        this.product = data.product;
-        console.log(data.product);
-        
-      },
-      err => {
-        console.log(err);
-      }
-    );
-  }
-  */
-
-  ngOnDestroy(): void {
-    this.subscription?.unsubscribe();
+    const name = this.activatedRoute.snapshot.params['name'];
+    const price = this.activatedRoute.snapshot.params['price'];
   }
 }

@@ -1,10 +1,10 @@
 import { Router } from '@angular/router';
-//import { MessageService } from './../services/message.service';
 import { Product } from './../model/product';
 import Swal from 'sweetalert2';
 import { ProductService } from './../services/product.service';
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { StorageService } from '../services/storage.service';
 
 @Component({
   selector: 'app-list',
@@ -19,7 +19,7 @@ export class ListComponent implements OnInit {
     // Inyectamos el servicio y lo necesario
     private productService: ProductService,
     private toast: ToastrService,
-    //private messageService: MessageService,
+    private storageService: StorageService,
     private router: Router
   ) {}
 
@@ -44,10 +44,10 @@ export class ListComponent implements OnInit {
 
   onDelete(id: number): void {
     Swal.fire({
-      title: 'Are you sure?',
-      text: 'You cannot undo',
+      title: 'Está seguro?',
+      text: 'No se puede deshacer',
       icon: 'warning',
-      showCancelButton: true,
+      showCancelButton: true, // ver boton de cancelar
       confirmButtonText: 'OK',
       cancelButtonText: 'Cancel',
     }).then((result) => {
@@ -73,8 +73,8 @@ export class ListComponent implements OnInit {
     });
   }
 
-  sendProduct(product: Product): void {
-    //this.messageService.sendMessage(product);
+  setProduct(product: Product): void {
+    this.storageService.setProduct(product);
     this.router.navigate(['/update']);
   }
 }
