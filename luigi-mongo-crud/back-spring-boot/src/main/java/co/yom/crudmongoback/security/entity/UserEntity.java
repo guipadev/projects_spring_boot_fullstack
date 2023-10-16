@@ -1,21 +1,27 @@
-package co.yom.crudmongoback.CRUD.entity;
+package co.yom.crudmongoback.security.entity;
 
 import co.yom.crudmongoback.global.entity.EntityId;
+import co.yom.crudmongoback.security.enums.RoleEnum;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@NoArgsConstructor
+import java.util.List;
+
+
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
-@Document(collection = "products")
-public class Product extends EntityId {
+@Document(collection = "users")
+public class UserEntity extends EntityId {
 
-    private String name;
-    private int price;
+    private String username;
+    private String email;
+    private String password;
+    List<RoleEnum> roles;
 
     @Override
     public int getId() {

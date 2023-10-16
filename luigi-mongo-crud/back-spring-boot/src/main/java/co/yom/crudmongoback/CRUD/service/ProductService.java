@@ -5,10 +5,10 @@ import co.yom.crudmongoback.CRUD.entity.Product;
 import co.yom.crudmongoback.CRUD.repository.ProductRepository;
 import co.yom.crudmongoback.global.exceptions.AttributeException;
 import co.yom.crudmongoback.global.exceptions.ResourceNotFoundException;
+import co.yom.crudmongoback.global.utils.Operations;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -34,8 +34,8 @@ public class ProductService implements IProductService {
         if(productRepository.existsByName(dto.getName()))
             throw new AttributeException("Ya existe un producto con dicho nombre");
 
-        int id = autoIncrement();
-        Product product = new Product(id, dto.getName(), dto.getPrice());
+        int id = Operations.autoIncrement(productRepository.findAll());
+        Product product = new Product(dto.getName(), dto.getPrice());
         return productRepository.save(product);
     }
 
@@ -59,16 +59,6 @@ public class ProductService implements IProductService {
                 .orElseThrow(()-> new ResourceNotFoundException("este producto no se encuentra"));
         productRepository.delete(product);
         return product;
-    }
-
-    // private methods
-    public int autoIncrement() {
-        List<Product> products = productRepository.findAll();
-        return products.isEmpty() ? 1 :
-                products.stream()
-                        .max(Comparator.comparing(Product::getId))
-                        .get()
-                        .getId() + 1;
     }
 
 }

@@ -18,5 +18,5 @@ public interface IProductService {
     public Product update(int id, ProductDto dto) throws ResourceNotFoundException, AttributeException;
     public Product delete(int id) throws ResourceNotFoundException;
 
-     int autoIncrement();
+     //int autoIncrement();
 }
