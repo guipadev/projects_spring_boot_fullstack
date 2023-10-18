@@ -7,6 +7,7 @@ import co.yom.crudmongoback.security.entity.UserEntity;
 import co.yom.crudmongoback.security.enums.RoleEnum;
 import co.yom.crudmongoback.security.repository.UserEntityRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,6 +18,7 @@ import java.util.stream.Collectors;
 public class UserEntityService {
 
     private final UserEntityRepository userEntityRepository;
+    private final PasswordEncoder passwordEncoder;
 
     public UserEntity create(CreateUserDto dto) throws AttributeException {
         if (userEntityRepository.existsByUsername(dto.getUsername()))
@@ -31,10 +33,13 @@ public class UserEntityService {
     private UserEntity mapUserFromDto(CreateUserDto dto) {
         int id = Operations.autoIncrement(userEntityRepository.findAll());
 
+        // Codificar la contraseña
+        String password = passwordEncoder.encode(dto.getPassword());
+
         // Convertir List<String> en roles
         List<RoleEnum> roles = dto.getRoles().stream().map(rol -> RoleEnum.valueOf(rol)).collect(Collectors.toList());
 
-        return new UserEntity(dto.getUsername(), dto.getEmail(), dto.getPassword(), roles);
+        return new UserEntity(dto.getUsername(), dto.getEmail(), password, roles);
     }
 
 }
