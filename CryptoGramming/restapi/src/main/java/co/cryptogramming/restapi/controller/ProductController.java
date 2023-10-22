@@ -1,6 +1,7 @@
 package co.cryptogramming.restapi.controller;
 
 import co.cryptogramming.restapi.domain.Product;
+import co.cryptogramming.restapi.dto.ProductDTO;
 import co.cryptogramming.restapi.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -13,12 +14,10 @@ import java.util.List;
  * Capa que tiene la responsabilidad de recibir todas las peticiones de nuestra
  * API
  * GET, POST, DELETE, UPDATE, en esta caso para los productos
- * 
- * @param <ProductDTO>
  */
 @RequiredArgsConstructor
 @RestController // Indicar que esta clase va a ser usada para recibir peticiones HTTP
-public class ProductController<ProductDTO> {
+public class ProductController {
 
     // Esta referencia sera inyectada como dependencia en la clase
     private final ProductService productService;
