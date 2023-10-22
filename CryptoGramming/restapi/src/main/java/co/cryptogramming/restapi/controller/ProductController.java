@@ -1,21 +1,13 @@
 package co.cryptogramming.restapi.controller;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-
-import co.cryptogramming.domain.Product;
+import co.cryptogramming.restapi.domain.Product;
 import co.cryptogramming.restapi.service.ProductService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * Capa que tiene la responsabilidad de recibir todas las peticiones de nuestra
@@ -40,37 +32,30 @@ public class ProductController<ProductDTO> {
      */
     @GetMapping(value = "/products", produces = "application/json")
     public List<Product> getProducts() {
-        return productService.getAllItems();
+        return productService.getAllProducts();
     }
 
     /**
-     * Es un metodo POST, endpoint nombre products, se recibe un objeto que queremos
-     * crear
-     * 
-     * @param product recibe el body de este tipo
-     * @return retorna objeto de tipo reponse entity, indicando que el producto a
-     *         sido creado
+     * Es un metodo POST, endpoint nombre products, se recibe un objeto que queremoscrear
+     * @param productDTO recibe el body de este tipo
+     * @return retorna objeto de tipo reponse entity, indicando que el producto ha sido creado
      */
     @PostMapping(value = "/product")
     public ResponseEntity saveProduct(@RequestBody ProductDTO productDTO) {
-
-        productService.create(productDTO);
-        return new ResponseEntity(HttpStatus.OK);
-
+        productService.createProduct(productDTO);
+        return new ResponseEntity(HttpStatus.CREATED);
     }
+
 
     @PutMapping(value ="/{productId}")
     public ResponseEntity updateProduct(@PathVariable int productId, @RequestBody ProductDTO productDTO) {
-
         productService.updateProduct(productId, productDTO);
-
         return new ResponseEntity(HttpStatus.OK);
+    }
 
     @DeleteMapping(value = "/{productId}")
     public ResponseEntity deleteProduct(@PathVariable int productId) {
-
-        productService.delete(productId);
-
+        productService.deleteProduct(productId);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 }

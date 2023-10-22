@@ -1,4 +1,4 @@
-package co.cryptogramming.domain.model;
+package co.cryptogramming.restapi.domain.model;
 
 import java.util.Collection;
 import java.util.List;
