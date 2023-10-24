@@ -12,7 +12,7 @@ import lombok.Setter;
 public class ProductDTO {
 
     private int id;
-    private String imagePath;
+    private String imageUrl;
     private String title;
     private String description;
 }

@@ -1,7 +1,9 @@
 package co.cryptogramming.restapi.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 
+import lombok.AllArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.mongodb.lang.NonNull;
@@ -9,6 +11,7 @@ import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 
+@AllArgsConstructor
 @Getter
 @Setter
 @Document(collection = "Product")
@@ -20,11 +23,6 @@ public class Product implements Serializable {
     private String imagePath;
     private String title;
     private String description;
-
-    public Product(@NonNull Integer id, String imagePath, String title, String description) {
-        this.id = id;
-        this.imagePath = imagePath;
-        this.title = title;
-        this.description = description;
-    }
+    private String distributor;
+    private Date releaseDate;
 }
