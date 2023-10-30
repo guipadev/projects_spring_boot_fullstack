@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="55b0520f-701e-41a3-bd2f-4640e6553321" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/yom/crudmongoback/App.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/yom/crudmongoback/CRUD/controller/ProductController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/yom/crudmongoback/CRUD/dto/ProductDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/yom/crudmongoback/CRUD/entity/Product.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/yom/crudmongoback/CRUD/repository/ProductRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/yom/crudmongoback/CRUD/service/IProductService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/yom/crudmongoback/CRUD/service/ProductService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/yom/crudmongoback/global/dto/MessageDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/yom/crudmongoback/global/entity/EntityId.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/yom/crudmongoback/global/exceptions/AttributeException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/yom/crudmongoback/global/exceptions/GlobalException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/yom/crudmongoback/global/exceptions/ResourceNotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/yom/crudmongoback/global/utils/Operations.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/yom/crudmongoback/security/config/BeansConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/yom/crudmongoback/security/controller/AuthController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/yom/crudmongoback/security/dto/CreateUserDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/yom/crudmongoback/security/entity/UserEntity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/yom/crudmongoback/security/enums/RoleEnum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/yom/crudmongoback/security/jwt/JwtEntryPoint.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/yom/crudmongoback/security/jwt/JwtFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/yom/crudmongoback/security/jwt/JwtProvider.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/yom/crudmongoback/security/repository/UserEntityRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/yom/crudmongoback/security/service/UserDetailsServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/yom/crudmongoback/security/service/UserEntityService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/yom/crudmongoback/security/service/UserPrincipal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/co/yom/crudmongoback/AppTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-angular/.editorconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-angular/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-angular/.vscode/extensions.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-angular/.vscode/launch.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-angular/.vscode/tasks.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-angular/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-angular/angular.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-angular/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-angular/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-angular/src/app/app-routing.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-angular/src/app/app.component.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-angular/src/app/app.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-angular/src/app/app.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-angular/src/app/app.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-angular/src/app/app.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-angular/src/app/menu/menu.component.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-angular/src/app/menu/menu.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-angular/src/app/menu/menu.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-angular/src/app/model/product.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-angular/src/app/product/create.component.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-angular/src/app/product/create.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-angular/src/app/product/create.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-angular/src/app/product/detail.component.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-angular/src/app/product/detail.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-angular/src/app/product/detail.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-angular/src/app/product/list.component.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-angular/src/app/product/list.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-angular/src/app/product/list.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-angular/src/app/product/update.component.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-angular/src/app/product/update.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-angular/src/app/product/update.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-angular/src/app/services/product.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-angular/src/app/services/storage.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-angular/src/assets/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-angular/src/enviroments/environment.prod.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-angular/src/enviroments/environment.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-angular/src/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-angular/src/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-angular/src/main.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-angular/src/styles.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-angular/tsconfig.app.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-angular/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-angular/tsconfig.spec.json" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2VdlzpCqBx0lgVpegBME6uGIoQq" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/home/yamid/Documents/projects_spring_boot_fullstack/luigi-mongo-crud/crud-mongo-jwt-back-jwt"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="App" type="Application" factoryName="Application">
+      <envs>
+        <env name="USER" value="yaormu" />
+        <env name="PASS" value="t8I7WtDOFv8ZICgz" />
+      </envs>
+      <option name="MAIN_CLASS_NAME" value="co.yom.crudmongoback.App" />
+      <module name="crud-mongo-back" />
+      <extension name="software.aws.toolkits.jetbrains.core.execution.JavaAwsConnectionExtension">
+        <option name="credential" />
+        <option name="region" />
+        <option name="useCurrentConnection" value="false" />
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="55b0520f-701e-41a3-bd2f-4640e6553321" name="Changes" comment="" />
+      <created>1695174111834</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1695174111834</updated>
+    </task>
+    <servers />
+  </component>
+</project>
