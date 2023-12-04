@@ -1,7 +1,7 @@
-package com.example.demo;
+package co.yom;
 
-import com.example.demo.exception.DemoSpringException;
-import com.example.demo.exception.ExceptionDetails;
+import co.yom.exception.DemoSpringException;
+import co.yom.exception.ExceptionDetails;
 import org.springframework.util.ObjectUtils;
 
 public class ProbarExcepciones {

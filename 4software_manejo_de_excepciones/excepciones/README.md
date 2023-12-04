@@ -7,10 +7,22 @@ Por ejemplo una aplicación encargada de sumar números, ocurriria una excepció
 
 Estos hace parte de un sin número de casos que no son contemplados dentro del flujo normal de la aplicación y como programadores debemos tratar de controlar todos estos flujos alternos.
 
+### Ejemplo
+Tenemos una aplicación cuyo registro es solo para personas mayores de 18 años, por lo cual debemos cesionarnos que nadie tenga una fecha de nacimiento, que al calcular sea menor a 18 años,
+si eso sucede probablemente tendremos que mostrar una excepción en la aplicación.
+
+Despues de esto podemos tener un archivo de log o registrar un archivo de logs, que sucede en la aplicación.
+Podemos guardar información en un archivo de log, podemos guardar datos en una tabla, incluso enviar notificaciones a los administradores de un sistema, hacer algo mas complejo como enviar
+notificaciones por email, notificaciones push, avisar a diferentes medios por mensaje de texto.
+Guardar el log, registrarlo en un base de datos, todo es puede involucrar el manejo de excepciones, porque tenemos que alertar en muchos casos a los interesados que ocurrio que tal vez
+merezca esta alerta.
+Todo depende del flujo o logica de negocio con la que nosotros estemos construyendo una determinada aplicación.
+
+ 
 ## Jerarquía de las excepciones
 Todos los objetos en Java, directa o indirectamente extienden de la clase Object.
 
-La clase padre de todas las excepciones **Throwable**
+La clase padre de todas las excepciones **Throwable** y que extiende de la clase ```Object```.
 
 ```
 public class Throwable implements Serializable {}

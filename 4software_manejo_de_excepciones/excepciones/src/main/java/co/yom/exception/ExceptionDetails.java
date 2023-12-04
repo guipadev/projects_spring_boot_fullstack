@@ -1,4 +1,4 @@
-package com.example.demo.exception;
+package co.yom.exception;
 
 public class ExceptionDetails {
 
