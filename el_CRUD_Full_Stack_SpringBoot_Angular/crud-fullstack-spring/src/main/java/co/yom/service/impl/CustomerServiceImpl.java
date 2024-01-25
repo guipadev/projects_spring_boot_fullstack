@@ -1,6 +1,7 @@
 package co.yom.service.impl;
 
 import co.yom.entity.Customer;
+import co.yom.exception.ResourceNotFoundException;
 import co.yom.repository.CustomerRepository;
 import co.yom.service.CustomerService;
 import org.springframework.stereotype.Service;
@@ -28,7 +29,11 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Customer findById(Integer id) {
-        return customerRepository.findById(id);
+        Customer customer = customerRepository.findById(id).orElseThrow(
+                () -> {
+                    throw new ResourceNotFoundException();
+                });
+        return customerRepository.findById(id).get();
     }
 
     @Override

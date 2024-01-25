@@ -1,14 +1,13 @@
 package co.yom.controller;
 
-
 import co.yom.entity.Customer;
 import co.yom.service.impl.CustomerServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
+// http://localhost:8081/api/customers
 @RequestMapping("/api/customers")
 public class CustomerController {
 
@@ -18,27 +17,32 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-    @PostMapping("/create")
-    //@RequestBody JSON -> Entity
+    // http://localhost:8081/api/customers
+    @PostMapping
+    // @RequestBody JSON -> Entity
     public Customer save(@RequestBody Customer customer) {
         return customerService.save(customer);
     }
 
-    @GetMapping("/findAll")
+    // http://localhost:8081/api/customers
+    @GetMapping
     public List<Customer> findAll() {
         return customerService.findAll();
     }
 
-    @GetMapping("/findById/{id}")
-    public Optional<Customer> findById(@PathVariable Integer id) {
-        return Optional.ofNullable(customerService.findById(id));
+    // http://localhost:8081/api/customers/1
+    @GetMapping("/{id}")
+    public Customer findById(@PathVariable Integer id) {
+        return customerService.findById(id);
     }
 
-    @DeleteMapping("/delete/{id}")
+    // http://localhost:8081/api/customers/1
+    @DeleteMapping("/{id}")
     public void deleteById(@PathVariable Integer id) {
         customerService.deleteById(id);
     }
 
+    // http://localhost:8081/api/customers
     @PutMapping("/update")
     public Customer update(@RequestBody Customer customer) {
         Customer customerDb = customerService.findById(customer.getId());
