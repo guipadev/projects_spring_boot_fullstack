@@ -7,7 +7,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class CustomerService {
-  private api: string = 'http://localhost:8080/api/customers';
+  PTO: number = 8081;
+
+  private api: string = `http://localhost:${this.PTO}/api/customers`;
 
   constructor(private http: HttpClient) {}
 
