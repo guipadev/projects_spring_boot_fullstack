@@ -16,4 +16,13 @@ export class CustomerService {
   getCustomerList(): Observable<Customer[]> {
     return this.http.get<Customer[]>(this.api);
   }
+
+  /**
+   * Método creación objecto tipo customer
+   * Retorna un objeto tipo customer, ya que retornamos el objeto ya creado
+   * @param customer
+   */
+  createCustomer(customer: Customer): Observable<Customer> {
+    return this.http.post<Customer>(this.api, customer);
+  }
 }
