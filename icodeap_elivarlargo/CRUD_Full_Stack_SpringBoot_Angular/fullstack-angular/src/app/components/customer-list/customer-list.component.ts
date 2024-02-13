@@ -26,4 +26,16 @@ export class CustomerListComponent implements OnInit {
       console.log(this.customers);
     });
   }
+
+  /**
+   * La finalidad de suscribirse, para que una vez realizado el eliminado
+   * del objeto Customer, pueda actualizar y visualizar en el componente
+   * de lista de customer que ya no existe
+   * @param id
+   */
+  deleteCustomer(id: number) {
+    this.customerService
+      .deleteCustomerById(id)
+      .subscribe(() => this.listCustomers());
+  }
 }

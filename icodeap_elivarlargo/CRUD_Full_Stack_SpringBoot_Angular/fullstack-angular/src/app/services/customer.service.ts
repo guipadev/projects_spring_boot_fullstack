@@ -25,4 +25,14 @@ export class CustomerService {
   createCustomer(customer: Customer): Observable<Customer> {
     return this.http.post<Customer>(this.api, customer);
   }
+
+  /**
+   * Eliminar por Id del Customer
+   * Observable para recibir notificación que se alla realizado la tarea
+   * Como en el backendo no esta indicado el tipo de dato a retornar por lo cual ponemos tipo any
+   * @param id tipo numerico
+   */
+  deleteCustomerById(id: number): Observable<any> {
+    return this.http.delete(`${this.api}/${id}`);
+  }
 }

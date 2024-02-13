@@ -17,4 +17,6 @@
 ## Probar la API - End Point
 ```http://localhost:8080/api/swagger-ui/index.html```
 
-
+## Uso Herramientas
+- Herramienta para creación del diagrama de BD y posterior generar script sql:
+https://www.visual-paradigm.com/

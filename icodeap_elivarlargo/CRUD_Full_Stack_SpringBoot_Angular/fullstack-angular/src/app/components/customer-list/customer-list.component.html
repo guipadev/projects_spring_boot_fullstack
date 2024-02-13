@@ -12,6 +12,7 @@
                 <th scope="col">FirstName</th>
                 <th scope="col">LastName</th>
                 <th scope="col">Email</th>
+                <th scope="col">Eliminar</th>
             </tr>
         </thead>
         <tbody>
@@ -20,6 +21,11 @@
                 <td>{{c.firstName}}</td>
                 <td>{{c.lastName}}</td>
                 <td>{{c.email}}</td>
+                <td>
+                    <button class="btn btn-warning" (click)="deleteCustomer(c.id)">
+                        Borrar
+                    </button>
+                </td>
             </tr>
         </tbody>
     </table>
