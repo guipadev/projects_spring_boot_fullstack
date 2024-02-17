@@ -1,1 +1,94 @@
-<p>persona works!</p>
+<div class="uig-g">
+    <!-- msj registro -->
+    <p-toast></p-toast>
+    <p-confirmDialog header="Confirmación" acceptLabel="Si" rejectLabel="No"
+        icon="pi pi-exclamation-triangle"></p-confirmDialog>
+    <p-panel header="Administración de Personas">
+        <div style="margin-bottom: 20px;">
+            <!-- items declarados para el menu -->
+            <p-menubar [model]="items"></p-menubar>
+        </div>
+        <!-- 
+        selection var que contendra el objeto del registro seleccionado
+        dataKey sera el id, que es un identificador único
+        -->
+        <p-table [value]="personas" [columns]="cols" [responsive]="true" selectionMode="single"
+            styleClass="p-datatable-striped" [tableStyle]="{'min-width': '50rem'}" [paginator]="true" [rows]="10"
+            [(selection)]="selectedPersona" dataKey="id">
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                        {{ col.header }}
+                        <p-sortIcon [field]="col.field" ariaLabel="Activate to sort"
+                            ariaLabelDesc="Activate to sort in descending order"
+                            ariaLabelAsc="Activate to sort in ascending"></p-sortIcon>
+                    </th>
+                    <!--
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Dirección</th>
+                    <th>Teléfono</th>
+                     -->
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-persona let-columns="columns">
+                <tr [pSelectableRow]="persona">
+                    <td *ngFor="let col of columns">
+                        {{ persona[col.field] }}
+                    </td>
+                    <!--
+                    <td>{{persona.id}}</td>
+                    <td>{{persona.nombre}}</td>
+                    <td>{{persona.apellido}}</td>
+                    <td>{{persona.direccion}}</td>
+                    <td>{{persona.telefono}}</td>    
+                    -->
+                </tr>
+            </ng-template>
+        </p-table>
+    </p-panel>
+    <p-dialog header="Persona" [responsive]="true" [style]="{width: '400px'}" [(visible)]="displaySaveDialog"
+        [modal]="true">
+        <div class="ui-g ui-fluid">
+
+            <div class="ui-g-12">
+                <div class="ui-g-4">
+                    <label for="nombre">Nombres</label>
+                </div>
+                <div class="ui-g-8">
+                    <input pInputText id="nombre" [(ngModel)]="persona.nombre">
+                </div>
+            </div>
+            <div class="ui-g-12">
+                <div class="ui-g-4">
+                    <label for="apellido">Apellidos</label>
+                </div>
+                <div class="ui-g-8">
+                    <input pInputText id="apellido" [(ngModel)]="persona.apellido">
+                </div>
+            </div>
+            <div class="ui-g-12">
+                <div class="ui-g-4">
+                    <label for="direccion">Dirección</label>
+                </div>
+                <div class="ui-g-8">
+                    <input pInputText id="direccion" [(ngModel)]="persona.direccion">
+                </div>
+            </div>
+            <div class="ui-g-12">
+                <div class="ui-g-4">
+                    <label for="telefono">Telefono</label>
+                </div>
+                <div class="ui-g-8">
+                    <input pInputText id="telefono" [(ngModel)]="persona.telefono">
+                </div>
+            </div>
+        </div>
+        <p-footer>
+            <div class="ui-dialog-buttonpane ui-helper-clearfix">
+                <button type="button" pButton icon="pi pi-check" (click)="save()" label="Guardar"></button>
+            </div>
+        </p-footer>
+    </p-dialog>
+</div>
