@@ -22,16 +22,16 @@ export class PersonaComponent implements OnInit {
 
   // Modelo para guardar persona
   persona: Persona = {
-    id: 0,
-    nombre: '',
-    apellido: '',
-    direccion: '',
-    telefono: '',
+    id: null,
+    nombre: null,
+    apellido: null,
+    direccion: null,
+    telefono: null,
   };
 
   // Seleccionar persona
   selectedPersona: Persona = {
-    id: 0,
+    id: null,
     nombre: null,
     apellido: null,
     direccion: null,
@@ -80,17 +80,22 @@ export class PersonaComponent implements OnInit {
       }
     } else {
       this.persona = {
-        id: 0,
-        nombre: '',
-        apellido: '',
-        direccion: '',
-        telefono: '',
+        id: null,
+        nombre: null,
+        apellido: null,
+        direccion: null,
+        telefono: null,
       };
     }
     this.displaySaveDialog = true;
   }
 
   save() {
+    if (this.persona === null) {
+      alert('Error: persona object is null');
+      return;
+    }
+
     this.personaService.save(this.persona).subscribe(
       (result: any) => {
         // result convertir a tipo Persona
@@ -113,7 +118,7 @@ export class PersonaComponent implements OnInit {
   }
 
   delete() {
-    if (this.selectedPersona === null || this.selectedPersona.id == 0) {
+    if (this.selectedPersona == null || this.selectedPersona.id == null) {
       this.messageService.add({
         severity: 'warn',
         summary: 'Advertencia!',
@@ -141,7 +146,8 @@ export class PersonaComponent implements OnInit {
 
   deleteObject(id: number) {
     let index = this.personas.findIndex((e) => e.id == id);
-
+    console.log('index => ' + index);
+    console.log('id => ' + id);
     if (index != -1) {
       this.personas.splice(index, 1);
     }

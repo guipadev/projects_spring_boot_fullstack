@@ -52,9 +52,9 @@ public class PersonaController {
         if (perso != null) {
             personaService.delete(id);
         } else {
-            return new ResponseEntity<>(perso, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<Persona>(perso, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return null;
+        return  new ResponseEntity<Persona>(perso, HttpStatus.OK);
     }
     @GetMapping("/find/{id}")
     public Persona find(@PathVariable Long id) {

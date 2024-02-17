@@ -7,13 +7,13 @@ import { Persona } from '../models/persona';
   providedIn: 'root',
 })
 export class PersonaService {
-  baseUlr: string = 'http://localhost:8082/api/v1';
+  baseUrl: string = 'http://localhost:8082/api/v1';
 
   constructor(private http: HttpClient) {}
 
   //Consultar todos los registros de personas
   getAll(): Observable<any> {
-    return this.http.get(this.baseUlr + '/all');
+    return this.http.get(this.baseUrl + '/all');
   }
 
   // Guardar o Editar registro de persona
@@ -23,13 +23,14 @@ export class PersonaService {
 
     headers = headers.set('Content-Type', 'application/json');
 
-    return this.http.post(this.baseUlr + '/save', JSON.stringify(persona), {
+    return this.http.post(this.baseUrl + '/save', JSON.stringify(persona), {
       headers: headers,
     });
   }
 
   // Eliminar registro de persona
-  delete(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUlr}/delete/${id}`);
+  delete(id: any): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}/delete/${id}`);
+    console.log(this.http.delete<any>(`${this.baseUrl}/delete/${id}`));
   }
 }
