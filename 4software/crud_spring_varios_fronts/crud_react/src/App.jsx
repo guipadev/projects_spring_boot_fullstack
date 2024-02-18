@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import "./App.css";
 import { PersonaService } from "./services/PersonaService";
@@ -9,6 +9,8 @@ import { Panel } from "primereact/panel";
 import { Dialog } from "primereact/dialog";
 import { Menubar } from "primereact/menubar";
 import { InputText } from "primereact/inputtext";
+import { Button } from "primereact/button";
+import { Messages } from "primereact/messages";
 
 import "primereact/resources/themes/saga-blue/theme.css";
 import "primereact/resources/primereact.min.css";
@@ -20,13 +22,18 @@ function App() {
 
   const [visible, setVisible] = useState(false);
 
+  const [persona, setPersona] = useState({
+    nombre: "",
+    apellido: "",
+    direccion: "",
+    telefono: "",
+  });
+
   const items = [
     {
       label: "Nuevo",
       icon: "pi pi-fw pi-plus",
-      command: () => {
-        showSaveDialog();
-      },
+      command: () => setVisible(true),
     },
     {
       label: "Editar",
@@ -39,14 +46,6 @@ function App() {
       command: () => alert("delete"),
     },
   ];
-
-  const persona = {
-    id: null,
-    nombre: null,
-    apellido: null,
-    direccion: null,
-    telefono: null,
-  };
 
   useEffect(() => {
     const personaService = new PersonaService();
@@ -61,8 +60,38 @@ function App() {
       });
   }, []);
 
-  const showSaveDialog = () => {
-    setVisible;
+  const handleChange = (e, field) => {
+    setPersona({ ...persona, [field]: e.target.value });
+  };
+
+  const msgs = useRef(null);
+
+  const handleSave = () => {
+    const personaService = new PersonaService();
+    personaService
+      .save(persona)
+      .then((savedPersona) => {
+        console.log("Persona guardada:", savedPersona);
+
+        setVisible(false); // Ocultar el diálogo después de guardar la persona
+
+        setPersona({
+          nombre: "",
+          apellido: "",
+          direccion: "",
+          telefono: "",
+        });
+
+        setPersonas((prevPersonas) => [...prevPersonas, savedPersona]); // Actualizar la lista de forma reactiva
+        msgs.current.show({
+          severity: "success",
+          summary: "Correcto",
+          detail: "Registro de persona correcto!!",
+        });
+      })
+      .catch((error) => {
+        console.error("Error al guardar persona:", error);
+      });
   };
 
   return (
@@ -70,7 +99,7 @@ function App() {
       <Menubar model={items} />
       <br />
       <Panel header="Personajes Los simpson">
-        <DataTable value={personas} paginator rows={5}>
+        <DataTable value={personas} paginator rows={5} responsive>
           <Column field="id" header="Id"></Column>
           <Column field="nombre" header="Nombre"></Column>
           <Column field="apellido" header="Apellido"></Column>
@@ -78,27 +107,74 @@ function App() {
           <Column field="telefono" header="Telefono"></Column>
         </DataTable>
       </Panel>
+      <Messages
+        ref={msgs}
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+        }}
+      />
       <Dialog
         header="Crear registro persona"
         visible={visible}
-        style={{ width: "80%" }}
+        style={{ width: "40%" }}
         modal={true}
-        onHide={() => setVisible}
+        onHide={() => setVisible(false)}
       >
-        <span className="p-float-label">
+        <div
+          className="flex flex-column gap-2"
+          style={{ marginBottom: "12px" }}
+        >
+          <label htmlFor="nombre">Nombres</label>
           <InputText
-            value={this.state.value}
             id="nombre"
-            onChange={(e) =>
-              this.setState((prevState) => {
-                let persona = Object.assign({}, prevState.persona);
-                persona.nombre = e.target.value;
-                return { persona };
-              })
-            }
+            value={persona.nombre}
+            onChange={(e) => handleChange(e, "nombre")}
+            aria-describedby="nombre-help"
           />
-          <label htmlFor="nombre">Nombre</label>
-        </span>
+          <small id="nombre-help">Ingrese nombres completos</small>
+        </div>
+        <div
+          className="flex flex-column gap-2"
+          style={{ marginBottom: "12px" }}
+        >
+          <label htmlFor="nombre">Apellidos</label>
+          <InputText
+            id="apellido"
+            value={persona.apellido}
+            onChange={(e) => handleChange(e, "apellido")}
+            aria-describedby="apellido-help"
+          />
+          <small id="apellido-help">Ingrese apellidos completos</small>
+        </div>
+        <div
+          className="flex flex-column gap-2"
+          style={{ marginBottom: "12px" }}
+        >
+          <label htmlFor="nombre">Dirección</label>
+          <InputText
+            id="direccion"
+            value={persona.direccion}
+            onChange={(e) => handleChange(e, "direccion")}
+            aria-describedby="direccion-help"
+          />
+          <small id="direccion-help">Ingrese dirección</small>
+        </div>
+        <div className="flex flex-column gap-2">
+          <label htmlFor="nombre">Telefono</label>
+          <InputText
+            id="telefono"
+            value={persona.telefono}
+            onChange={(e) => handleChange(e, "telefono")}
+            aria-describedby="telefono-help"
+          />
+          <small id="telefono-help">Ingrese número telefonico o celular</small>
+        </div>
+        <div className="card flex justify-content-center">
+          <Button label="Guardar" onClick={handleSave} severity="success" />
+        </div>
       </Dialog>
     </div>
   );

@@ -8,10 +8,8 @@ export class PersonaService {
       .get(this.baseUrl + "all")
       .then((res) => {
         if (res.data) {
-          //console.log("Respuesta recibida:", res.data);
           return res.data;
         } else {
-          //console.warn("La respuesta está vacía.");
           return null;
         }
       })
@@ -19,5 +17,9 @@ export class PersonaService {
         console.error("Error fetching data:", error);
         throw error;
       });
+  }
+
+  save(persona) {
+    return axios.post(this.baseUrl + "save", persona).then((res) => res.data);
   }
 }
