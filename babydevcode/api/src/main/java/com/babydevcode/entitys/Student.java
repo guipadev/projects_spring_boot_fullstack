@@ -25,8 +25,10 @@ public class Student {
     @Column(name = "dni")
     private Long dni;
 
-    @Column(name = "student_status")
-    private Short studentStatus;
+
+    @ManyToOne // Muchos alumnos pueden tener un tipo de estado
+    @JoinColumn(name = "student_status") // Column que tiene la unión
+    private Type studentStatus;
 
     @Column(name = "student_career")
     private Short studentCareer;
