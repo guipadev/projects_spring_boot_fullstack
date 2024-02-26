@@ -1,10 +1,9 @@
 package com.babydevcode.services;
 
 import com.babydevcode.entitys.Student;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
 
 public interface StudentService {
 
-    List<Student> getStudents();
+    Page<Student> getStudents(Integer page, Integer size);
 }
