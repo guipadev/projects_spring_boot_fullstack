@@ -19,11 +19,20 @@ public class StudentServiceImpl implements StudentService  {
 
 
     @Override
-    public Page<Student> getStudents(Integer page, Integer size) {
+    public Page<Student> getStudents(Integer page, Integer size, String name) {
         Pageable pageable = PageRequest.of(page, size);
-        //Page<Student> listStudents = studentRepository.findAll(pageable);
-        //return listStudents;
-        return studentRepository.findAll(pageable);
+
+        if (name.isEmpty()) {
+            //Page<Student> listStudents = studentRepository.findAll(pageable);
+            //return listStudents;
+            return studentRepository.findAll(pageable);
+        } else {
+            //Page<Student> listSearch = studentRepository.findByNameContaining(name, pageable);
+            //return listSearch;
+            return studentRepository.findByNameContaining(name, pageable);
+        }
+
+
     }
 
 }

@@ -14,7 +14,11 @@ public class StudentController {
     private final StudentServiceImpl studentService;
 
     @GetMapping("/students")
-    public Page<Student> findAllStudents(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "10") Integer size) {
-        return studentService.getStudents(page, size);
+    public Page<Student> findAllStudents(
+            @RequestParam(defaultValue = "0") Integer page,
+            @RequestParam(defaultValue = "10") Integer size,
+            @RequestParam(value = "name", required = false, defaultValue = "") String name
+    ) {
+        return studentService.getStudents(page, size, name);
     }
 }
