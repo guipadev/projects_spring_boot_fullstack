@@ -26,4 +26,9 @@ public class StudentController {
     public ResponseEntity<String> deleteStudent(@PathVariable(name = "id") Long id) {
         return studentService.deleteStudent(id);
     }
+
+    @PostMapping("/students")
+    public ResponseEntity<String> createStudent(@RequestBody Student newStudent) {
+        return studentService.createStudent(newStudent);
+    }
 }
