@@ -35,4 +35,17 @@ public class StudentServiceImpl implements StudentService  {
 
     }
 
+    @Override
+    public String deleteStudent(Long id) {
+        Boolean studentExist = studentRepository.findById(id).isPresent();
+
+        String message = studentExist ? "Estudiante eliminado" : "Estudiante ID " + id + " no existe";
+
+        if (studentExist) {
+            studentRepository.deleteById(id);
+        }
+
+        return message;
+    }
+
 }

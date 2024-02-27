@@ -4,9 +4,8 @@ import com.babydevcode.entitys.Student;
 import com.babydevcode.services.impl.StudentServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 @RequiredArgsConstructor
 @RestController
 public class StudentController {
@@ -20,5 +19,10 @@ public class StudentController {
             @RequestParam(value = "name", required = false, defaultValue = "") String name
     ) {
         return studentService.getStudents(page, size, name);
+    }
+
+    @DeleteMapping("/students/{id}")
+    public String deleteStudent(@PathVariable(name = "id") Long id) {
+        return studentService.deleteStudent(id);
     }
 }
