@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,33 +21,35 @@ public class StudentServiceImpl implements StudentService  {
 
 
     @Override
-    public Page<Student> getStudents(Integer page, Integer size, String name) {
+    public ResponseEntity<Object> getStudents(Integer page, Integer size, String name) {
         Pageable pageable = PageRequest.of(page, size);
 
         if (name.isEmpty()) {
-            //Page<Student> listStudents = studentRepository.findAll(pageable);
-            //return listStudents;
-            return studentRepository.findAll(pageable);
+            Page<Student> listStudents = studentRepository.findAll(pageable);
+            return new ResponseEntity<>(listStudents, HttpStatus.OK);
         } else {
-            //Page<Student> listSearch = studentRepository.findByNameContaining(name, pageable);
-            //return listSearch;
-            return studentRepository.findByNameContaining(name, pageable);
+            Page<Student> listSearch = studentRepository.findByNameContaining(name, pageable);
+
+            if (listSearch.isEmpty()) {
+                return new ResponseEntity<>(listSearch, HttpStatus.BAD_REQUEST);
+            } else {
+                return new ResponseEntity<>(listSearch, HttpStatus.OK);
+            }
         }
 
 
     }
 
     @Override
-    public String deleteStudent(Long id) {
-        Boolean studentExist = studentRepository.findById(id).isPresent();
-
-        String message = studentExist ? "Estudiante eliminado" : "Estudiante ID " + id + " no existe";
+    public ResponseEntity<String> deleteStudent(Long id) {
+        boolean studentExist = studentRepository.findById(id).isPresent();
 
         if (studentExist) {
             studentRepository.deleteById(id);
+            return new ResponseEntity<>("Estudiante eliminado correctamente", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Estudiante no existe", HttpStatus.BAD_REQUEST);
         }
-
-        return message;
     }
 
 }
