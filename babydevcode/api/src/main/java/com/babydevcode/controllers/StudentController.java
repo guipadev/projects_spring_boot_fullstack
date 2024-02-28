@@ -3,7 +3,6 @@ package com.babydevcode.controllers;
 import com.babydevcode.entitys.Student;
 import com.babydevcode.services.impl.StudentServiceImpl;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,7 +26,7 @@ public class StudentController {
         return studentService.deleteStudent(id);
     }
 
-    @PostMapping("/students")
+    @PostMapping("/student")
     public ResponseEntity<String> createStudent(@RequestBody Student newStudent) {
         return studentService.createStudent(newStudent);
     }

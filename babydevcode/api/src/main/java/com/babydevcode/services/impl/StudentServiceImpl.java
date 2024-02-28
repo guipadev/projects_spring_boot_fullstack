@@ -52,14 +52,17 @@ public class StudentServiceImpl implements StudentService  {
         }
     }
 
+
     @Override
-    public ResponseEntity<String> createStudent(Student student) {
-        if (student.getId() != null && (studentRepository.existsById(student.getId()))) {
-                return new ResponseEntity<>("Estudiante ya existe", HttpStatus.NOT_ACCEPTABLE);
+    public ResponseEntity<String> createStudent(Student newStudent) {
+        if (newStudent.getId() != null && studentRepository.existsById(newStudent.getId()) || studentRepository.existsByDni(newStudent.getDni())) {
+            return new ResponseEntity<>("Estudiante ya existe", HttpStatus.BAD_REQUEST);
         }
 
-        studentRepository.save(student);
+        studentRepository.save(newStudent);
         return new ResponseEntity<>("Estudiante creado", HttpStatus.CREATED);
     }
+
+
 
 }
